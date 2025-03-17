@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.env
+.venv/
+env/
+*.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Uploads
+uploads/
+
+# Git specific
+*.swp
+*.swo
