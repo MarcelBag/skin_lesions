@@ -23,3 +23,14 @@ uploads/
 # Git specific
 *.swp
 *.swo
+
+# Ignore TensorFlow & PyTorch large files
+tensorflow/
+torch/
+*.pb
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.tflite
+*.onnx
