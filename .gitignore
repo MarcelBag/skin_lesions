@@ -49,3 +49,9 @@ __pycache__/
 *.pyc
 *.pyo
 .venv/
+
+# Ignore Large Library Files
+*.dylib
+*.so
+*.zip
+*.tar.gz
