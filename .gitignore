@@ -34,3 +34,18 @@ torch/
 *.pth
 *.tflite
 *.onnx
+
+# Environment file
+.env
+
+# Database files
+/backend/models/tafuta.db
+
+# Secrets or config files
+config.json
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+.venv/
