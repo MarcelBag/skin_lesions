@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis</title>
+    <link rel="stylesheet" href="cs/styles.css">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <h1>Welcome to Our Image Analysis</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" id="sign-in">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2>Welcome to Our Image Analysis</h2>
+        </div>
+
+        <section class="content">
+            <!-- Three columns below -->
+            <div class="row">
+                <div class="column">
+                    <h3>Feature 1</h3>
+                    <img src="assets/feature1.jpg" alt="Feature 1">
+                </div>
+                <div class="column">
+                    <h3>Feature 2</h3>
+                    <img src="assets/feature2.jpg" alt="Feature 2">
+                </div>
+                <div class="column">
+                    <h3>Feature 3</h3>
+                    <img src="assets/feature3.jpg" alt="Feature 3">
+                </div>
+            </div>
+
+            <!-- Another three columns -->
+            <div class="row">
+                <div class="column">
+                    <h3>Feature 4</h3>
+                    <img src="assets/feature4.jpg" alt="Feature 4">
+                </div>
+                <div class="column">
+                    <h3>Feature 5</h3>
+                    <img src="assets/feature5.jpg" alt="Feature 5">
+                </div>
+                <div class="column">
+                    <h3>Feature 6</h3>
+                    <img src="assets/feature6.jpg" alt="Feature 6">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sign-in Form -->
+        <section id="signin-form" class="hidden">
+            <h3>Sign In</h3>
+            <form>
+                <label for="username">Email/Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="login-btn">Login</button>
+            </form>
+        </section>
+
+        <!-- Home Page After Login -->
+        <section id="upload-section" class="hidden">
+            <h3>Upload Image</h3>
+            <p>Please upload your image for analysis:</p>
+            <form id="upload-form">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <label for="analysis">Analysis Type:</label>
+                <select id="analysis" name="analysis">
+                    <option value="benign">Benign</option>
+                    <option value="malignant">Malignant</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
