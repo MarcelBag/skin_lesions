@@ -1,0 +1,52 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.env
+.venv/
+venv/
+env/
+*.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Uploads
+uploads/
+
+# Git specific
+*.swp
+*.swo
+
+# Ignore TensorFlow & PyTorch large files
+tensorflow/
+torch/
+*.pb
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.tflite
+*.onnx
+
+# Environment file
+.env
+
+# Database files
+/backend/models/tafuta.db
+
+# Secrets or config files
+config.json
+
+# Ignore Large Library Files
+*.dylib
+*.so
+*.zip
+*.tar.gz
