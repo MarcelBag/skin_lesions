@@ -29,3 +29,26 @@ document.getElementById('sign-in').addEventListener('click', (e) => {
     e.preventDefault();
     window.location.href = "signin.html";
 });
+
+
+// Handle "Proceed to Upload" Button
+document.getElementById('proceed-button').addEventListener('click', () => {
+    document.querySelector('.guidelines').classList.add('hidden');
+    document.getElementById('upload-section').classList.remove('hidden');
+});
+
+// Handle Image Upload Form Submission
+document.getElementById('upload-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Simulate image analysis process
+    alert('Image submitted for analysis!');
+    
+    // Hide upload section and show results section
+    document.getElementById('upload-section').classList.add('hidden');
+    document.getElementById('results-section').classList.remove('hidden');
+
+    // Placeholder for showing results
+    document.getElementById('results-section').querySelector('p').textContent =
+        'Your image has been analyzed. Results will be displayed here soon!';
+});

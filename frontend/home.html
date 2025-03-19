@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Image Analysis</title>
+    <link rel="stylesheet" href="cs/styles.css">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <h1>Welcome to Image Analysis</h1>
+        </div>
+    </header>
+
+    <main>
+        <!-- Guidelines Section -->
+        <section class="guidelines">
+            <h2>Guidelines</h2>
+            <p>Welcome to the Image Analysis app. Follow these steps to analyze your image:</p>
+            <ul>
+                <li>Ensure the image is clear and relevant for the analysis.</li>
+                <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
+                <li>Click the upload button and submit your image for processing.</li>
+            </ul>
+            <button id="proceed-button">Proceed to Upload</button>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload-section" class="hidden">
+            <h2>Upload Image for Analysis</h2>
+            <form id="upload-form">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                
+                <label for="analysis-type">Analysis Type:</label>
+                <select id="analysis-type" name="analysis-type">
+                    <option value="benign">Benign</option>
+                    <option value="malignant">Malignant</option>
+                </select>
+
+                <button type="submit">Submit Image</button>
+            </form>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <h2>Analysis Results</h2>
+            <p>Your analysis results will appear here once processed.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

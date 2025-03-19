@@ -15,7 +15,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="sigin.html" id="sign-in">Sign In</a></li>
+                    <li><a href="signin.html">Sign in</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,40 +59,10 @@
                 </div>
             </div>
         </section>
-
-        <!-- Sign-in Form -->
-        <section id="signin-form" class="hidden">
-            <h3>Sign In</h3>
-            <form>
-                <label for="username">Email/Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="button" id="login-btn">Login</button>
-            </form>
-        </section>
-
-        <!-- Home Page After Login -->
-        <section id="upload-section" class="hidden">
-            <h3>Upload Image</h3>
-            <p>Please upload your image for analysis:</p>
-            <form id="upload-form">
-                <label for="image">Upload Image:</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
-                <label for="analysis">Analysis Type:</label>
-                <select id="analysis" name="analysis">
-                    <option value="benign">Benign</option>
-                    <option value="malignant">Malignant</option>
-                </select>
-                <button type="submit">Submit</button>
-            </form>
-        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>

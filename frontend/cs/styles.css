@@ -6,7 +6,15 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
+main {
+    flex: 1;
+}
+
 
 .hidden {
     display: none;
@@ -97,11 +105,16 @@ form button {
    Footer Styles
 ========================== */
 footer {
+  
     background: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
+    font-size: 14px;
+    position: relative; /* Remove this if previously set */
+    bottom: 0;
+    width: 100%;
 }
 
 /* ==========================
@@ -188,4 +201,108 @@ footer {
 .signup-link a:hover,
 .signin-link a:hover {
     text-decoration: underline;
+}
+
+/* ==========================
+   Home Page Styles
+========================== */
+
+/* Guidelines Section */
+.guidelines {
+    text-align: center;
+    margin: 30px 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.guidelines h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.guidelines p,
+.guidelines ul {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.guidelines button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.guidelines button:hover {
+    background: #0056b3;
+}
+
+/* Upload Section */
+#upload-section {
+    text-align: center;
+    margin: 30px 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#upload-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#upload-section label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+#upload-section input,
+#upload-section select,
+#upload-section button {
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#upload-section button {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#upload-section button:hover {
+    background: #218838;
+}
+
+/* Results Section */
+#results-section {
+    text-align: center;
+    margin: 30px 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#results-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#results-section p {
+    font-size: 16px;
+    color: #555;
 }
