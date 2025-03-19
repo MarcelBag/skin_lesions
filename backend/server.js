@@ -28,6 +28,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html')); // Corrected path
 });
 
+// Serve the frontend's index.html for the root URL
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/signin.html')); // Corrected path
+});
+
+
 // Handle file upload
 app.post('/api/upload', upload.single('image'), (req, res) => {
     res.json({ message: 'Image uploaded successfully', analysis: req.body.analysis });
