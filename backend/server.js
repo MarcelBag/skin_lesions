@@ -28,11 +28,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html')); // Corrected path
 });
 
-// Serve the frontend's index.html for the root URL
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/signin.html')); // Corrected path
+// Serve the frontend's signup.html for the root URL
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/signup.html'));
 });
 
+// Serve the frontend's signin.html for the root URL
+app.get('/signin', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/signin.html'));
+});
 
 // Handle file upload
 app.post('/api/upload', upload.single('image'), (req, res) => {
