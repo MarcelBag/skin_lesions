@@ -23,3 +23,9 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
         alert('Please select an image to upload.');
     }
 });
+
+// Redirect to Sign-In Page
+document.getElementById('sign-in').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = "signin.html";
+});
