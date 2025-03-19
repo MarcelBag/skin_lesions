@@ -1,4 +1,6 @@
-/* General Styles */
+/* ==========================
+   General Styles
+========================== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +8,13 @@ body {
     line-height: 1.6;
 }
 
+.hidden {
+    display: none;
+}
+
+/* ==========================
+   Header Styles
+========================== */
 header {
     background: #333;
     color: #fff;
@@ -33,12 +42,18 @@ nav ul li a {
     text-decoration: none;
 }
 
+/* ==========================
+   Hero Section
+========================== */
 .hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
 }
 
+/* ==========================
+   Content Section
+========================== */
 .content {
     padding: 20px;
 }
@@ -61,6 +76,26 @@ nav ul li a {
     height: auto;
 }
 
+/* ==========================
+   Form Styles
+========================== */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label, 
+form input, 
+form select, 
+form button {
+    margin-bottom: 10px;
+}
+
+/* ==========================
+   Footer Styles
+========================== */
 footer {
     background: #333;
     color: #fff;
@@ -69,17 +104,88 @@ footer {
     margin-top: 20px;
 }
 
-.hidden {
-    display: none;
-}
+/* ==========================
+   Sign-Up and Sign-In Form Styles
+========================== */
 
-form {
+/* Shared Container Styles */
+.signup-container,
+.signin-container {
     display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f4;
+    margin: 0;
 }
 
-form label, form input, form select, form button {
-    margin-bottom: 10px;
+/* Shared Form Styles */
+.signup-form,
+.signin-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-form h2,
+.signin-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.signup-form label,
+.signin-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.signup-form input,
+.signin-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.signup-form button,
+.signin-form button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.signup-form button:hover,
+.signin-form button:hover {
+    background: #0056b3;
+}
+
+/* Link Styles */
+.signup-link,
+.signin-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-link a,
+.signin-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.signup-link a:hover,
+.signin-link a:hover {
+    text-decoration: underline;
 }
