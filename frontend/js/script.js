@@ -1,3 +1,8 @@
+// Import and initialize Firebase
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+
+
 // Show/Hide Sign-in Form
 document.getElementById('sign-in').addEventListener('click', (e) => {
     e.preventDefault();
