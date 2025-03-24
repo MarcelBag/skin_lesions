@@ -11,10 +11,24 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+// Firebase configuration (Environment Variables via dotenv-webpack in production)
+const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+};
 
 
 const app = express();
 const users = []; // Temporary in-memory user storage. Replace with a database in production.
+
+// Initialize Firebase and Authentication
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -89,6 +103,52 @@ app.get('/signin', (req, res) => {
 app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/signup.html'));
 });
+
+
+// Handle Sign-Up Form Submission
+document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        // Sign up user with Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        alert('Sign-Up Successful!');
+        console.log('User signed up:', userCredential.user);
+
+        // Redirect to the Sign-In page
+        window.location.href = 'signin.html';
+    } catch (error) {
+        console.error('Error during sign-up:', error.message);
+        alert(error.message);
+    }
+});
+
+// Handle Sign-In Form Submission
+document.getElementById('signin-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        // Sign in user with Firebase Authentication
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        alert('Sign-In Successful!');
+        console.log('User signed in:', userCredential.user);
+
+        // Save token or redirect to home page
+        localStorage.setItem('authToken', userCredential.user.accessToken);
+        window.location.href = 'home.html';
+    } catch (error) {
+        console.error('Error during sign-in:', error.message);
+        alert(error.message);
+    }
+});
+
+
 
 // Start the Server
 const PORT = 3000;
