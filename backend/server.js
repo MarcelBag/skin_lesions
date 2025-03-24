@@ -1,3 +1,7 @@
+// Import Firebase functions
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 const express = require('express');
 //const bcrypt = require('bcrypt');
 const bcrypt = require('bcryptjs');
@@ -6,6 +10,8 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+
 
 const app = express();
 const users = []; // Temporary in-memory user storage. Replace with a database in production.
