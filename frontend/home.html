@@ -54,6 +54,16 @@
         <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js">
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            alert('You must be logged in to access this page.');
+            window.location.href = 'signin.html';
+        }
+    });
+
+    </script>
 </body>
 </html>
