@@ -9,132 +9,123 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
-}
-main {
+  }
+  main {
     flex: 1;
-}
-
-
-.hidden {
+  }
+  
+  .hidden {
     display: none;
-}
-
-/* ==========================
-   Header Styles
-========================== */
-header {
+  }
+  
+  /* ==========================
+     Header Styles
+  ========================== */
+  header {
     background: #333;
     color: #fff;
     padding: 10px 20px;
-}
-
-header h1 {
+  }
+  
+  header h1 {
     margin: 0;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: flex-end;
     margin: 0;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     margin-left: 20px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     color: #fff;
     text-decoration: none;
-}
-
-/* ==========================
-   Hero Section
-========================== */
-.hero {
+  }
+  
+  /* ==========================
+     Hero Section
+  ========================== */
+  .hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
-}
-
-/* ==========================
-   Content Section
-========================== */
-.content {
+  }
+  
+  /* ==========================
+     Content Section
+  ========================== */
+  .content {
     padding: 20px;
-}
-
-.row {
+  }
+  
+  .row {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-}
-
-.column {
+  }
+  
+  .column {
     flex: 1;
     margin: 10px;
     text-align: center;
-}
-
-.column img {
+  }
+  
+  .column img {
     width: 100%;
     max-width: 300px;
     height: auto;
-}
-
-/* ==========================
-   Form Styles
-========================== */
-form {
+  }
+  
+  /* ==========================
+     Form Styles
+  ========================== */
+  form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
-}
-
-form label, 
-form input, 
-form select, 
-form button {
-    margin-bottom: 10px;
-}
-
-/* ==========================
-   Footer Styles
-========================== */
-footer {
+  }
   
+  form label,
+  form input,
+  form select,
+  form button {
+    margin-bottom: 10px;
+  }
+  
+  /* ==========================
+     Footer Styles
+  ========================== */
+  footer {
     background: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
     font-size: 14px;
-    position: relative; /* Remove this if previously set */
-    bottom: 0;
     width: 100%;
-}
-
-/* ==========================
-   Sign-Up and Sign-In Form Styles
-========================== */
-
-/* Shared Container Styles */
-.signup-container,
-.signin-container {
+  }
+  
+  /* ==========================
+     Sign-Up and Sign-In Form Styles
+  ========================== */
+  .signup-container,
+  .signin-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: #f4f4f4;
-    margin: 0;
-}
-
-/* Shared Form Styles */
-.signup-form,
-.signin-form {
+  }
+  
+  .signup-form,
+  .signin-form {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -142,34 +133,34 @@ footer {
     max-width: 400px;
     width: 100%;
     text-align: center;
-}
-
-.signup-form h2,
-.signin-form h2 {
+  }
+  
+  .signup-form h2,
+  .signin-form h2 {
     margin-bottom: 20px;
     font-size: 24px;
-}
-
-.signup-form label,
-.signin-form label {
+  }
+  
+  .signup-form label,
+  .signin-form label {
     display: block;
     text-align: left;
     margin-bottom: 5px;
     font-weight: bold;
-}
-
-.signup-form input,
-.signin-form input {
+  }
+  
+  .signup-form input,
+  .signin-form input {
     width: 95%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-}
-
-.signup-form button,
-.signin-form button {
+  }
+  
+  .signup-form button,
+  .signin-form button {
     background: #007BFF;
     color: #fff;
     border: none;
@@ -178,57 +169,54 @@ footer {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
-}
-
-.signup-form button:hover,
-.signin-form button:hover {
+  }
+  
+  .signup-form button:hover,
+  .signin-form button:hover {
     background: #0056b3;
-}
-
-/* Link Styles */
-.signup-link,
-.signin-link {
+  }
+  
+  .signup-link,
+  .signin-link {
     margin-top: 15px;
     font-size: 14px;
-}
-
-.signup-link a,
-.signin-link a {
+  }
+  
+  .signup-link a,
+  .signin-link a {
     color: #007BFF;
     text-decoration: none;
-}
-
-.signup-link a:hover,
-.signin-link a:hover {
+  }
+  
+  .signup-link a:hover,
+  .signin-link a:hover {
     text-decoration: underline;
-}
-
-/* ==========================
-   Home Page Styles
-========================== */
-
-/* Guidelines Section */
-.guidelines {
+  }
+  
+  /* ==========================
+     Home Page Specific Styles
+  ========================== */
+  .guidelines {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.guidelines h2 {
+  }
+  
+  .guidelines h2 {
     font-size: 24px;
     margin-bottom: 10px;
-}
-
-.guidelines p,
-.guidelines ul {
+  }
+  
+  .guidelines p,
+  .guidelines ul {
     font-size: 16px;
     margin-bottom: 20px;
-}
-
-.guidelines button {
+  }
+  
+  .guidelines button {
     background: #007BFF;
     color: #fff;
     border: none;
@@ -237,72 +225,71 @@ footer {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
-}
-
-.guidelines button:hover {
+  }
+  
+  .guidelines button:hover {
     background: #0056b3;
-}
-
-/* Upload Section */
-#upload-section {
+  }
+  
+  #upload-section {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#upload-section h2 {
+  }
+  
+  #upload-section h2 {
     font-size: 24px;
     margin-bottom: 20px;
-}
-
-#upload-section label {
+  }
+  
+  #upload-section label {
     font-weight: bold;
     margin-top: 15px;
     display: block;
-}
-
-#upload-section input,
-#upload-section select,
-#upload-section button {
+  }
+  
+  #upload-section input,
+  #upload-section select,
+  #upload-section button {
     width: 70%;
     margin: 10px auto;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-}
-
-#upload-section button {
+  }
+  
+  #upload-section button {
     background: #28a745;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background 0.3s ease;
-}
-
-#upload-section button:hover {
+  }
+  
+  #upload-section button:hover {
     background: #218838;
-}
-
-/* Results Section */
-#results-section {
+  }
+  
+  #results-section {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#results-section h2 {
+  }
+  
+  #results-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
-}
-
-#results-section p {
+  }
+  
+  #results-section p {
     font-size: 16px;
     color: #555;
-}
+  }
+  
