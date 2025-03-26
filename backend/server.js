@@ -1,102 +1,104 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import "dotenv/config";
+// backend/server.js
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require('path');
+require('dotenv').config();
+const admin = require('firebase-admin');
 
-// Firebase configuration – if not using a bundler, replace process.env values with your config directly.
-const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || "YOUR_FIREBASE_API_KEY",
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || "YOUR_FIREBASE_AUTH_DOMAIN",
-  projectId: process.env.FIREBASE_PROJECT_ID || "YOUR_FIREBASE_PROJECT_ID",
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "YOUR_FIREBASE_STORAGE_BUCKET",
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-  appId: process.env.FIREBASE_APP_ID || "YOUR_FIREBASE_APP_ID",
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID || "YOUR_FIREBASE_MEASUREMENT_ID"
-};
+const app = express();
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
+// Conditional check for FIREBASE_PRIVATE_KEY
+const privateKey = process.env.FIREBASE_PRIVATE_KEY
+  ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+  : undefined;
 
-// Authentication State Listener to protect pages
-onAuthStateChanged(auth, (user) => {
-  // Define public pages that do not require authentication
-  const publicPages = ['signin.html', 'signup.html'];
-  const currentPage = window.location.pathname.split('/').pop();
-  
-  // If user is not logged in and current page is not public, redirect to sign in
-  if (!user && !publicPages.includes(currentPage)) {
-    window.location.href = "signin.html";
+if (!privateKey) {
+  console.error('FIREBASE_PRIVATE_KEY is not set in the environment variables.');
+  process.exit(1); // Exit the process if the key is missing
+}
+
+// Firebase Admin SDK initialization
+admin.initializeApp({
+  credential: admin.credential.cert({
+    type: process.env.FIREBASE_TYPE || "service_account",
+    project_id: process.env.FIREBASE_PROJECT_ID,
+    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+    private_key: privateKey, // Use the conditional variable
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    client_id: process.env.FIREBASE_CLIENT_ID,
+    auth_uri: process.env.FIREBASE_AUTH_URI,
+    token_uri: process.env.FIREBASE_TOKEN_URI,
+    auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+    client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
+  }),
+});
+
+// Middleware and remaining code continues unchanged...
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Firebase Authentication API (Sign-Up)
+app.post('/api/signup', async (req, res) => {
+  const { email, password, name } = req.body;
+  try {
+    const userRecord = await admin.auth().createUser({
+      email,
+      password,
+      displayName: name,
+    });
+    res.status(201).json({ message: 'User registered successfully!', uid: userRecord.uid });
+  } catch (error) {
+    console.error('Sign-Up Error:', error.message);
+    res.status(400).json({ message: error.message });
   }
 });
 
-// Handle Login Button in Sign-In Form
-const loginBtn = document.getElementById('login-btn');
-if (loginBtn) {
-  loginBtn.addEventListener('click', async () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-  
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      alert('Sign-In Successful!');
-      console.log('User signed in:', userCredential.user);
-  
-      // Redirect to home page after login
-      window.location.href = "index.html";
-    } catch (error) {
-      console.error('Error during sign-in:', error.message);
-      alert(error.message);
-    }
-  });
-}
+// Firebase Authentication API (Sign-In)
+app.post('/api/signin', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const userRecord = await admin.auth().getUserByEmail(email);
+    const customToken = await admin.auth().createCustomToken(userRecord.uid);
+    res.status(200).json({ message: 'Sign-In successful!', token: customToken });
+  } catch (error) {
+    console.error('Sign-In Error:', error.message);
+    res.status(400).json({ message: error.message });
+  }
+});
 
-// Handle Sign-Up Form Submission
-const signupForm = document.getElementById('signup-form');
-if (signupForm) {
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const name = document.getElementById('name') ? document.getElementById('name').value : "";
-  
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      alert('Sign-Up Successful!');
-      console.log('User signed up:', userCredential.user);
-  
-      // Redirect to sign-in page after successful sign-up
-      window.location.href = "signin.html";
-    } catch (error) {
-      console.error('Error during sign-up:', error.message);
-      alert(error.message);
-    }
-  });
-}
+// Protected Route (Example)
+app.get('/api/home', (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  admin
+    .auth()
+    .verifyIdToken(token)
+    .then((decodedToken) => {
+      res.status(200).json({ message: `Welcome, ${decodedToken.email}!` });
+    })
+    .catch((error) => {
+      console.error('Token Verification Error:', error.message);
+      res.status(403).json({ message: 'Invalid or expired token.' });
+    });
+});
 
-// Handle Image Upload Form Submission on Home Page
-const uploadForm = document.getElementById('upload-form');
-if (uploadForm) {
-  uploadForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const image = document.getElementById('image').files[0];
-    const analysisType = document.getElementById('analysis').value;
-  
-    if (!image) {
-      alert('Please select an image to upload.');
-      return;
-    }
-  
-    alert(`Image submitted for ${analysisType} analysis!`);
-    console.log(`File: ${image.name}, Analysis Type: ${analysisType}`);
-  
-    // Simulate API call to handle the image upload and analysis
-    // After processing, display results (here simulated)
-    uploadForm.style.display = "none";
-    const resultsSection = document.getElementById('results-section');
-    if (resultsSection) {
-      resultsSection.classList.remove('hidden');
-    }
-  });
-}
+// Serve Frontend Pages
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/signin.html'));
+});
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/signup.html'));
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
