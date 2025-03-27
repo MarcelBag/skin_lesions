@@ -1,9 +1,10 @@
 // backend/server.js
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env
 const admin = require('firebase-admin');
 
 const app = express();
@@ -34,7 +35,7 @@ admin.initializeApp({
   }),
 });
 
-// Middleware and remaining code continues unchanged...
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -59,7 +60,9 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/signin', async (req, res) => {
   const { email, password } = req.body;
   try {
+    // Validate that the email exists
     const userRecord = await admin.auth().getUserByEmail(email);
+    // Create a custom token for secure client-side authentication
     const customToken = await admin.auth().createCustomToken(userRecord.uid);
     res.status(200).json({ message: 'Sign-In successful!', token: customToken });
   } catch (error) {
