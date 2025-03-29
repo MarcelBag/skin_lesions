@@ -25,7 +25,7 @@ admin.initializeApp({
     type: process.env.FIREBASE_TYPE || "service_account",
     project_id: process.env.FIREBASE_PROJECT_ID,
     private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-    private_key: privateKey, // Use the conditional variable
+    //private_key: privateKey, // Use the conditional variable
     client_email: process.env.FIREBASE_CLIENT_EMAIL,
     client_id: process.env.FIREBASE_CLIENT_ID,
     auth_uri: process.env.FIREBASE_AUTH_URI,
