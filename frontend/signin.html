@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/CS/styles.css">
 </head>
 <body>
   <div class="signin-container">
     <form class="signin-form" id="signin-form">
       <h2>Sign In</h2>
       <label for="email">Email:</label>
+      <!-- Changed id from "username" to "email" to match the script -->
       <input type="text" id="email" name="email" placeholder="Enter your email" required>
       
       <label for="password">Password:</label>
@@ -21,8 +22,7 @@
       <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
     </form>
   </div>
-  
-  <!-- Include Firebase SDK and our script -->
-  <script type="module" src="script.js"></script>
+  <!-- At the bottom of signin.html/signup.html -->
+<script src="/js/script.js"></script>
 </body>
 </html>
