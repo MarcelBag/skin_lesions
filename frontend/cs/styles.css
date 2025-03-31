@@ -379,7 +379,7 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
-/* Hide elements */
+/* Utility: hide elements */
 .hidden {
     display: none;
   }
@@ -455,14 +455,51 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 6px;
-    width: 300px;
+    width: 350px;
     position: relative;
   }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .close-btn {
-    position: absolute;
-    top: 5px;
-    right: 10px;
     font-size: 24px;
     cursor: pointer;
+  }
+  
+  /* Settings Tabs */
+  .settings-tabs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  .settings-tabs li {
+    margin-right: 10px;
+  }
+  .tab-button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .tab-button.active {
+    border-bottom: 2px solid #333;
+    font-weight: bold;
+  }
+  
+  /* Tab content styling */
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Other settings section */
+  .other-settings {
+    margin-top: 15px;
   }
   
