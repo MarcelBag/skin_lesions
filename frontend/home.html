@@ -20,19 +20,53 @@
             </div>
           </div>
         </div>
-        <!-- Modal for updating user details -->
-        <div id="settings-modal" class="modal hidden">
-          <div class="modal-content">
+      </header>
+    
+      <!-- Settings Modal (hidden by default) -->
+      <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Settings</h2>
             <span class="close-btn" id="close-settings">&times;</span>
-            <h2>User Settings</h2>
-            <label for="new-name">Change Name:</label>
-            <input type="text" id="new-name" placeholder="Enter new name">
-            <button id="update-name">Update Name</button>
+          </div>
+          <div class="modal-body">
+            <!-- Tabs menu -->
+            <ul class="settings-tabs">
+              <li><button class="tab-button active" data-tab="general">General</button></li>
+              <li><button class="tab-button" data-tab="notifications">Notifications</button></li>
+              <li><button class="tab-button" data-tab="update-profile">Update Profile</button></li>
+            </ul>
+            <!-- Tab contents -->
+            <div id="general" class="tab-content active">
+              <p>General settings can go here.</p>
+              <!-- Add additional general settings if needed -->
+            </div>
+            <div id="notifications" class="tab-content hidden">
+              <p>Notifications settings can go here.</p>
+              <!-- Add additional notifications settings if needed -->
+            </div>
+            <div id="update-profile" class="tab-content hidden">
+              <label for="new-name">Change Name:</label>
+              <input type="text" id="new-name" placeholder="Enter new name">
+              <button id="update-name">Update Name</button>
+            </div>
+            <!-- Theme and other options (always visible) -->
+            <div class="other-settings">
+              <label for="theme-select">Theme:</label>
+              <select id="theme-select">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+              <br>
+              <label>
+                <input type="checkbox" id="show-code-checkbox">
+                Always show code when using data analyst
+              </label>
+            </div>
           </div>
         </div>
-      </header>
-
-    <main>
+      </div>
+    
         <!-- Guidelines Section -->
         <section class="guidelines">
             <h2>Guidelines</h2>

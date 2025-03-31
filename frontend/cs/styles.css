@@ -379,7 +379,7 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
-/* Utility to hide elements */
+/* Hide elements */
 .hidden {
     display: none;
   }
@@ -394,13 +394,13 @@ body {
     padding: 10px 20px;
   }
   
-  /* User Dropdown container (top-right) */
+  /* User dropdown container */
   .user-dropdown {
     position: relative;
     cursor: pointer;
   }
   
-  /* Avatar circle */
+  /* Avatar circle styling */
   .user-avatar {
     width: 40px;
     height: 40px;
@@ -438,7 +438,7 @@ body {
     background-color: #f0f0f0;
   }
   
-  /* Modal styling for settings */
+  /* Modal styling */
   .modal {
     position: fixed;
     top: 0;
@@ -460,8 +460,8 @@ body {
   }
   .close-btn {
     position: absolute;
-    right: 10px;
     top: 5px;
+    right: 10px;
     font-size: 24px;
     cursor: pointer;
   }

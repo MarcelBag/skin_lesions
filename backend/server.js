@@ -106,7 +106,7 @@ const authMiddleware = (req, res, next) => {
 // ===========================
 //   Protected Route
 // ===========================
-app.get('/api/home', authMiddleware, (req, res) => {
+app.get('/api/home.html', authMiddleware, (req, res) => {
   res.status(200).json({ message: `Welcome to home, ${req.user.email}!` });
 });
 
