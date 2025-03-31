@@ -29,7 +29,7 @@ if (signupForm) {
 }
 
 // ---------------------------
-//  Sign-In Handler (unchanged)
+//  Sign-In Handler
 // ---------------------------
 const loginBtn = document.getElementById('login-btn');
 if (loginBtn) {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const data = await res.json();
       
       // Update header with user info
-      // If there's a profilePhoto field, use it; otherwise, compute initials from name.
+      // If there's a profilePhoto field, using it; otherwise, computing an initials from name.
       const userAvatar = document.getElementById('user-avatar');
       if (data.profilePhoto) {
         userAvatar.innerHTML = `<img src="${data.profilePhoto}" alt="Profile Photo" style="width:100%; height:100%; border-radius:50%;">`;
@@ -143,14 +143,14 @@ if (closeSettingsBtn && settingsModal) {
     settingsModal.classList.add('hidden');
   });
 }
-
 // ---------------------------
 // Update Name Handler (within settings modal)
 // ---------------------------
 const updateNameBtn = document.getElementById('update-name');
 if (updateNameBtn) {
   updateNameBtn.addEventListener('click', async () => {
-    const newName = document.getElementById('new-name').value;
+    const newNameInput = document.getElementById('new-name');
+    const newName = newNameInput.value.trim();
     if (!newName) {
       alert("Please enter a new name.");
       return;
@@ -168,7 +168,7 @@ if (updateNameBtn) {
       const data = await res.json();
       if (res.ok) {
         alert(data.message);
-        // Optionally update the avatar initials immediately
+        // Update avatar initials immediately
         const userAvatar = document.getElementById('user-avatar');
         let initials = '';
         const nameParts = newName.split(' ');
@@ -178,6 +178,9 @@ if (updateNameBtn) {
           initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
         }
         userAvatar.innerText = initials;
+        // Clear the input field
+        newNameInput.value = '';
+        // Hide the modal by adding the hidden class
         settingsModal.classList.add('hidden');
       } else {
         alert(data.message);
@@ -188,4 +191,3 @@ if (updateNameBtn) {
     }
   });
 }
-// ---------------------------
