@@ -8,10 +8,33 @@
 </head>
 <body>
     <header>
-        <div class="menu">
-            <h1>Welcome to Image Analysis</h1>
+        <div class="header-container">
+          <h1>Welcome to Your Dashboard</h1>
+          <!-- User details container in the top-right -->
+          <div class="user-dropdown">
+            <!-- Avatar area: if user has a profile photo, show it; otherwise show initials -->
+            <div id="user-avatar" class="user-avatar">
+              <!-- Content will be updated by JavaScript -->
+              <span id="user-initials">--</span>
+            </div>
+            <!-- Hidden dropdown menu -->
+            <div id="user-menu" class="user-menu hidden">
+              <button id="open-settings">Settings</button>
+              <button id="sign-out">Logout</button>
+            </div>
+          </div>
         </div>
-    </header>
+        <!-- Hidden settings form (appears when "Settings" is clicked) -->
+        <div id="settings-modal" class="modal hidden">
+          <div class="modal-content">
+            <span class="close-btn" id="close-settings">&times;</span>
+            <h2>User Settings</h2>
+            <label for="new-name">Change Name:</label>
+            <input type="text" id="new-name" placeholder="Enter new name">
+            <button id="update-name">Update Name</button>
+          </div>
+        </div>
+      </header>
 
     <main>
         <!-- Guidelines Section -->
