@@ -1,123 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Image Analysis</title>
-    <link rel="stylesheet" href="/CS/styles.css">
+  <meta charset="UTF-8">
+  <title>Home - Image Analysis</title>
+  <link rel="stylesheet" href="/CS/styles.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-          <h1>Dashboard</h1>
-          <div class="user-dropdown">
-            <div id="user-avatar" class="user-avatar">
-              <span id="user-initials">--</span>
-            </div>
-            <div id="user-menu" class="user-menu hidden">
-              <button id="open-settings">Settings</button>
-              <button id="sign-out">Logout</button>
-            </div>
-          </div>
+  <header>
+    <div class="header-container">
+      <h1>Dashboard</h1>
+      <!-- User dropdown in top-right -->
+      <div class="user-dropdown">
+        <div id="user-avatar" class="user-avatar">
+          <span id="user-initials">--</span>
         </div>
-      </header>
-    
-      <!-- Settings Modal (hidden by default) -->
-      <div id="settings-modal" class="modal hidden">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>Settings</h2>
-            <span class="close-btn" id="close-settings">&times;</span>
-          </div>
-          <div class="modal-body">
-            <!-- Tabs menu -->
-            <ul class="settings-tabs">
-              <li><button class="tab-button active" data-tab="general">General</button></li>
-              <li><button class="tab-button" data-tab="notifications">Notifications</button></li>
-              <li><button class="tab-button" data-tab="update-profile">Update Profile</button></li>
-            </ul>
-            <!-- Tab contents -->
-            <div id="general" class="tab-content active">
-              <p>General settings can go here.</p>
-              <!-- Add additional general settings if needed -->
-            </div>
-            <div id="notifications" class="tab-content hidden">
-              <p>Notifications settings can go here.</p>
-              <!-- Add additional notifications settings if needed -->
-            </div>
-            <div id="update-profile" class="tab-content hidden">
-              <label for="new-name">Change Name:</label>
-              <input type="text" id="new-name" placeholder="Enter new name">
-              <button id="update-name">Update Name</button>
-            </div>
-            <!-- Theme and other options (always visible) -->
-            <div class="other-settings">
-              <label for="theme-select">Theme:</label>
-              <select id="theme-select">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
-              <br>
-              <label>
-                <input type="checkbox" id="show-code-checkbox">
-                Always show code when using data analyst
-              </label>
-            </div>
-          </div>
+        <div id="user-menu" class="user-menu hidden">
+          <button id="open-settings">Settings</button>
+          <button id="sign-out">Logout</button>
         </div>
       </div>
+    </div>
+  </header>
+
+  <!-- Settings Modal (hidden by default) -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <span class="close-btn" id="close-settings">&times;</span>
+      </div>
+      <div class="modal-body">
+        <!-- Tabs menu -->
+        <ul class="settings-tabs">
+          <li><button class="tab-button active" data-tab="general">General</button></li>
+          <li><button class="tab-button" data-tab="notifications">Notifications</button></li>
+          <li><button class="tab-button" data-tab="update-profile">Update Profile</button></li>
+        </ul>
+        <!-- Tab contents -->
+        <div id="general" class="tab-content active">
+          <p>General settings can go here.</p>
+        </div>
+        <div id="notifications" class="tab-content hidden">
+          <p>Notifications settings can go here.</p>
+        </div>
+        <div id="update-profile" class="tab-content hidden">
+          <label for="new-name">Change Name:</label>
+          <input type="text" id="new-name" placeholder="Enter new name">
+          <button id="update-name">Update Name</button>
+        </div>
+        <!-- Always-visible options -->
+        <div class="other-settings">
+          <label for="theme-select">Theme:</label>
+          <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+          <br>
+          <label>
+            <input type="checkbox" id="show-code-checkbox">
+            Always show code when using data analyst
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
     
-        <!-- Guidelines Section -->
-        <section class="guidelines">
-            <h2>Guidelines</h2>
-            <p>Welcome to the Image Analysis app. Follow these steps to analyze your image:</p>
-            <ul>
-                <li>Ensure the image is clear and relevant for the analysis.</li>
-                <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
-                <li>Click the upload button and submit your image for processing.</li>
-                <li>Click the upload button and submit.</li>
-            </ul>
-            <button id="proceed-button">Proceed to Upload</button>
-        </section>
+  <!-- Guidelines Section -->
+  <section class="guidelines">
+    <h2>Guidelines</h2>
+    <p>Welcome to the Image Analysis app. Follow these steps to analyze your image:</p>
+    <ul>
+      <li>Ensure the image is clear and relevant for the analysis.</li>
+      <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
+      <li>Click the upload button and submit your image for processing.</li>
+      <li>Click the upload button and submit.</li>
+    </ul>
+    <button id="proceed-button">Proceed to Upload</button>
+  </section>
 
-        <!-- Upload Section -->
-        <section id="upload-section" class="hidden">
-            <h2>Upload Image for Analysis</h2>
-            <form id="upload-form">
-                <label for="image">Upload Image:</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
-                
-                <label for="analysis-type">Analysis Type:</label>
-                <select id="analysis-type" name="analysis-type">
-                    <option value="benign">Benign</option>
-                    <option value="malignant">Malignant</option>
-                </select>
+  <!-- Upload Section -->
+  <section id="upload-section" class="hidden">
+    <h2>Upload Image for Analysis</h2>
+    <form id="upload-form">
+      <label for="image">Upload Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+      <label for="analysis-type">Analysis Type:</label>
+      <select id="analysis-type" name="analysis-type">
+        <option value="benign">Benign</option>
+        <option value="malignant">Malignant</option>
+      </select>
+      <button type="submit">Submit Image</button>
+    </form>
+  </section>
 
-                <button type="submit">Submit Image</button>
-            </form>
-        </section>
+  <!-- Results Section -->
+  <section id="results-section" class="hidden">
+    <h2>Analysis Results</h2>
+    <p>Your analysis results will appear here once processed.</p>
+  </section>
 
-        <!-- Results Section -->
-        <section id="results-section" class="hidden">
-            <h2>Analysis Results</h2>
-            <p>Your analysis results will appear here once processed.</p>
-        </section>
-    </main>
+  <footer>
+    <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
+  </footer>
 
-    <footer>
-        <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
-    </footer>
-
-    <script src="js/script.js">
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            alert('You must be logged in to access this page.');
-            window.location.href = 'signin.html';
-        }
-    });
-
-    </script>
+  <!-- Only include one script reference -->
+  <script src="/JS/script.js"></script>
 </body>
 </html>

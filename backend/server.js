@@ -106,7 +106,7 @@ const authMiddleware = (req, res, next) => {
 // ===========================
 //   Protected Route
 // ===========================
-app.get('/api/home.html', authMiddleware, (req, res) => {
+app.get('/api/home', authMiddleware, (req, res) => {
   res.status(200).json({ message: `Welcome to home, ${req.user.email}!` });
 });
 
@@ -114,36 +114,36 @@ app.get('/api/home.html', authMiddleware, (req, res) => {
 // Get current user info (protected)
 // ---------------------------
 app.get('/api/user', authMiddleware, async (req, res) => {
-    try {
-      const user = await User.findById(req.user.userId);
-      if (!user) return res.status(404).json({ message: "User not found" });
-      res.status(200).json({ name: user.name, email: user.email });
-    } catch (err) {
-      console.error("Get user error:", err.message);
-      res.status(500).json({ message: "Server error" });
-    }
-  });
-  
-  // ---------------------------
-  // Update current user's name (protected)
-  // ---------------------------
-  app.put('/api/user', authMiddleware, async (req, res) => {
-    try {
-      const { name } = req.body;
-      if (!name) return res.status(400).json({ message: "Name is required" });
-      
-      const user = await User.findById(req.user.userId);
-      if (!user) return res.status(404).json({ message: "User not found" });
-      
-      user.name = name;
-      await user.save();
-      res.status(200).json({ message: "User updated successfully!", name: user.name });
-    } catch (err) {
-      console.error("Update user error:", err.message);
-      res.status(500).json({ message: "Server error" });
-    }
-  });
-  
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.status(200).json({ name: user.name, email: user.email });
+  } catch (err) {
+    console.error("Get user error:", err.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ---------------------------
+// Update current user's name (protected)
+// ---------------------------
+app.put('/api/user', authMiddleware, async (req, res) => {
+  try {
+    const { name } = req.body;
+    if (!name) return res.status(400).json({ message: "Name is required" });
+    
+    const user = await User.findById(req.user.userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    
+    user.name = name;
+    await user.save();
+    res.status(200).json({ message: "User updated successfully!", name: user.name });
+  } catch (err) {
+    console.error("Update user error:", err.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 // ===========================
 //   Serve Frontend Pages

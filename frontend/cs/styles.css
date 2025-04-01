@@ -378,29 +378,32 @@ body {
   top: 5px;
   font-size: 24px;
   cursor: pointer;
+  z-index: 9999;
 }
+
+
 /* Utility: hide elements */
 .hidden {
     display: none;
   }
   
-  /* Header container styling */
+  /* Header container */
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
   }
   
-  /* User dropdown container */
+  /* User Dropdown container */
   .user-dropdown {
     position: relative;
     cursor: pointer;
   }
   
-  /* Avatar circle styling */
+  /* Avatar circle */
   .user-avatar {
     width: 40px;
     height: 40px;
@@ -413,7 +416,7 @@ body {
     color: #fff;
   }
   
-  /* Dropdown menu styling */
+  /* Dropdown menu */
   .user-menu {
     position: absolute;
     top: 45px;
@@ -423,7 +426,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     min-width: 150px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
   }
   .user-menu button {
@@ -490,7 +493,7 @@ body {
     font-weight: bold;
   }
   
-  /* Tab content styling */
+  /* Tab content */
   .tab-content {
     display: none;
   }
