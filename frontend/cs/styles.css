@@ -9,100 +9,101 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  main {
+}
+
+main {
     flex: 1;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Header Styles
-  ========================== */
-  header {
+========================== */
+header {
     background: #333;
     color: #fff;
     padding: 10px 20px;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     margin: 0;
-  }
-  
-  nav ul {
+}
+
+nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: flex-end;
     margin: 0;
-  }
-  
-  nav ul li {
+}
+
+nav ul li {
     margin-left: 20px;
-  }
-  
-  nav ul li a {
+}
+
+nav ul li a {
     color: #fff;
     text-decoration: none;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Hero Section
-  ========================== */
-  .hero {
+========================== */
+.hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Content Section
-  ========================== */
-  .content {
+========================== */
+.content {
     padding: 20px;
-  }
-  
-  .row {
+}
+
+.row {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-  }
-  
-  .column {
+}
+
+.column {
     flex: 1;
     margin: 10px;
     text-align: center;
-  }
-  
-  .column img {
+}
+
+.column img {
     width: 100%;
     max-width: 300px;
     height: auto;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Form Styles
-  ========================== */
-  form {
+========================== */
+form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
-  }
-  
-  form label,
-  form input,
-  form select,
-  form button {
+}
+
+form label,
+form input,
+form select,
+form button {
     margin-bottom: 10px;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Footer Styles
-  ========================== */
-  footer {
+========================== */
+footer {
     background: #333;
     color: #fff;
     text-align: center;
@@ -110,22 +111,22 @@ body {
     margin-top: 20px;
     font-size: 14px;
     width: 100%;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Sign-Up and Sign-In Form Styles
-  ========================== */
-  .signup-container,
-  .signin-container {
+========================== */
+.signup-container,
+.signin-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: #f4f4f4;
-  }
-  
-  .signup-form,
-  .signin-form {
+}
+
+.signup-form,
+.signin-form {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -133,34 +134,34 @@ body {
     max-width: 400px;
     width: 100%;
     text-align: center;
-  }
-  
-  .signup-form h2,
-  .signin-form h2 {
+}
+
+.signup-form h2,
+.signin-form h2 {
     margin-bottom: 20px;
     font-size: 24px;
-  }
-  
-  .signup-form label,
-  .signin-form label {
+}
+
+.signup-form label,
+.signin-form label {
     display: block;
     text-align: left;
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  
-  .signup-form input,
-  .signin-form input {
+}
+
+.signup-form input,
+.signin-form input {
     width: 95%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-  }
-  
-  .signup-form button,
-  .signin-form button {
+}
+
+.signup-form button,
+.signin-form button {
     background: #007BFF;
     color: #fff;
     border: none;
@@ -169,54 +170,54 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
-  }
-  
-  .signup-form button:hover,
-  .signin-form button:hover {
+}
+
+.signup-form button:hover,
+.signin-form button:hover {
     background: #0056b3;
-  }
-  
-  .signup-link,
-  .signin-link {
+}
+
+.signup-link,
+.signin-link {
     margin-top: 15px;
     font-size: 14px;
-  }
-  
-  .signup-link a,
-  .signin-link a {
+}
+
+.signup-link a,
+.signin-link a {
     color: #007BFF;
     text-decoration: none;
-  }
-  
-  .signup-link a:hover,
-  .signin-link a:hover {
+}
+
+.signup-link a:hover,
+.signin-link a:hover {
     text-decoration: underline;
-  }
-  
-  /* ==========================
+}
+
+/* ==========================
      Home Page Specific Styles
-  ========================== */
-  .guidelines {
+========================== */
+.guidelines {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .guidelines h2 {
+}
+
+.guidelines h2 {
     font-size: 24px;
     margin-bottom: 10px;
-  }
-  
-  .guidelines p,
-  .guidelines ul {
+}
+
+.guidelines p,
+.guidelines ul {
     font-size: 16px;
     margin-bottom: 20px;
-  }
-  
-  .guidelines button {
+}
+
+.guidelines button {
     background: #007BFF;
     color: #fff;
     border: none;
@@ -225,96 +226,82 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
-  }
-  
-  .guidelines button:hover {
+}
+
+.guidelines button:hover {
     background: #0056b3;
-  }
-  
-  #upload-section {
+}
+
+#upload-section {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  #upload-section h2 {
+}
+
+#upload-section h2 {
     font-size: 24px;
     margin-bottom: 20px;
-  }
-  
-  #upload-section label {
+}
+
+#upload-section label {
     font-weight: bold;
     margin-top: 15px;
     display: block;
-  }
-  
-  #upload-section input,
-  #upload-section select,
-  #upload-section button {
+}
+
+#upload-section input,
+#upload-section select,
+#upload-section button {
     width: 70%;
     margin: 10px auto;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-  }
-  
-  #upload-section button {
+}
+
+#upload-section button {
     background: #28a745;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background 0.3s ease;
-  }
-  
-  #upload-section button:hover {
+}
+
+#upload-section button:hover {
     background: #218838;
-  }
-  
-  #results-section {
+}
+
+#results-section {
     text-align: center;
     margin: 30px 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  #results-section h2 {
+}
+
+#results-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
-  }
-  
-  #results-section p {
+}
+
+#results-section p {
     font-size: 16px;
     color: #555;
-  }
-  
-/* Common utility */
-.hidden {
-  display: none;
 }
 
-/* Header container */
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-}
-
-/* User Dropdown container (top-right) */
+/* ==========================
+   User Dropdown and Modal Styles
+========================== */
 .user-dropdown {
   position: relative;
   cursor: pointer;
 }
 
-/* Avatar circle */
 .user-avatar {
   width: 40px;
   height: 40px;
@@ -327,11 +314,10 @@ body {
   color: #fff;
 }
 
-/* Dropdown menu styling */
 .user-menu {
   position: absolute;
-  right: 0;
   top: 45px;
+  right: 0;
   background-color: #fff;
   color: #333;
   border: 1px solid #ccc;
@@ -340,6 +326,7 @@ body {
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 .user-menu button {
   width: 100%;
   padding: 10px;
@@ -348,11 +335,12 @@ body {
   text-align: left;
   cursor: pointer;
 }
+
 .user-menu button:hover {
   background-color: #f0f0f0;
 }
 
-/* Modal (for settings) */
+/* Modal for settings */
 .modal {
   position: fixed;
   top: 0;
@@ -365,6 +353,8 @@ body {
   justify-content: center;
   z-index: 2000;
 }
+
+/* Modal Content */
 .modal-content {
   background-color: #fff;
   padding: 20px;
@@ -372,6 +362,7 @@ body {
   width: 300px;
   position: relative;
 }
+
 .close-btn {
   position: absolute;
   right: 10px;
@@ -381,128 +372,31 @@ body {
   z-index: 9999;
 }
 
-
-/* Utility: hide elements */
+/* Ensure modal is hidden when the hidden class is added */
 .hidden {
-    display: none;
-  }
-  
-  /* Header container */
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  /* User Dropdown container */
-  .user-dropdown {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  /* Avatar circle */
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #555;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: #fff;
-  }
-  
-  /* Dropdown menu */
-  .user-menu {
-    position: absolute;
-    top: 45px;
-    right: 0;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-width: 150px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-  }
-  .user-menu button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-  }
-  .user-menu button:hover {
-    background-color: #f0f0f0;
-  }
-  
-  /* Modal styling */
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-  }
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 6px;
-    width: 350px;
-    position: relative;
-  }
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .close-btn {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  /* Settings Tabs */
-  .settings-tabs {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-  .settings-tabs li {
-    margin-right: 10px;
-  }
-  .tab-button {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  .tab-button.active {
-    border-bottom: 2px solid #333;
-    font-weight: bold;
-  }
-  
-  /* Tab content */
-  .tab-content {
-    display: none;
-  }
-  .tab-content.active {
-    display: block;
-  }
-  
-  /* Other settings section */
-  .other-settings {
-    margin-top: 15px;
-  }
-  
+  display: none;
+}
+
+/* ==========================
+   Dark Mode Styles (if applicable)
+========================== */
+body.dark-theme {
+  background-color: #121212;
+  color: #fff;
+}
+
+body.dark-theme header {
+  background-color: #1d1d1d;
+}
+
+body.dark-theme .user-avatar {
+  background-color: #777;
+}
+
+body.dark-theme .user-menu {
+  background-color: #1d1d1d;
+}
+
+body.dark-theme .user-menu button {
+  color: #fff;
+}
