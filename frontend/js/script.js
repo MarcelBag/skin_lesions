@@ -79,12 +79,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const data = await res.json();
       
       // Update header with user info
-      // If there's a profilePhoto field, using it; otherwise, computing an initials from name.
       const userAvatar = document.getElementById('user-avatar');
       if (data.profilePhoto) {
         userAvatar.innerHTML = `<img src="${data.profilePhoto}" alt="Profile Photo" style="width:100%; height:100%; border-radius:50%;">`;
       } else {
-        // Generate initials: first and last letter of the full name (if available)
         let initials = '';
         if (data.name) {
           const nameParts = data.name.split(' ');
@@ -129,7 +127,6 @@ const settingsModal = document.getElementById('settings-modal');
 if (openSettingsBtn && settingsModal) {
   openSettingsBtn.addEventListener('click', () => {
     settingsModal.classList.remove('hidden');
-    // Hide the dropdown after opening settings
     document.getElementById('user-menu').classList.add('hidden');
   });
 }
@@ -143,6 +140,7 @@ if (closeSettingsBtn && settingsModal) {
     settingsModal.classList.add('hidden');
   });
 }
+
 // ---------------------------
 // Update Name Handler (within settings modal)
 // ---------------------------
@@ -168,7 +166,6 @@ if (updateNameBtn) {
       const data = await res.json();
       if (res.ok) {
         alert(data.message);
-        // Update avatar initials immediately
         const userAvatar = document.getElementById('user-avatar');
         let initials = '';
         const nameParts = newName.split(' ');
@@ -178,9 +175,7 @@ if (updateNameBtn) {
           initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
         }
         userAvatar.innerText = initials;
-        // Clear the input field
         newNameInput.value = '';
-        // Hide the modal by adding the hidden class
         settingsModal.classList.add('hidden');
       } else {
         alert(data.message);

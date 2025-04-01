@@ -30,25 +30,12 @@
         <span class="close-btn" id="close-settings">&times;</span>
       </div>
       <div class="modal-body">
-        <!-- Tabs menu -->
-        <ul class="settings-tabs">
-          <li><button class="tab-button active" data-tab="general">General</button></li>
-          <li><button class="tab-button" data-tab="notifications">Notifications</button></li>
-          <li><button class="tab-button" data-tab="update-profile">Update Profile</button></li>
-        </ul>
-        <!-- Tab contents -->
-        <div id="general" class="tab-content active">
-          <p>General settings can go here.</p>
-        </div>
-        <div id="notifications" class="tab-content hidden">
-          <p>Notifications settings can go here.</p>
-        </div>
-        <div id="update-profile" class="tab-content hidden">
+        <!-- Update Profile Section -->
+        <div id="update-profile">
           <label for="new-name">Change Name:</label>
           <input type="text" id="new-name" placeholder="Enter new name">
           <button id="update-name">Update Name</button>
         </div>
-        <!-- Always-visible options -->
         <div class="other-settings">
           <label for="theme-select">Theme:</label>
           <select id="theme-select">
@@ -73,7 +60,6 @@
       <li>Ensure the image is clear and relevant for the analysis.</li>
       <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
       <li>Click the upload button and submit your image for processing.</li>
-      <li>Click the upload button and submit.</li>
     </ul>
     <button id="proceed-button">Proceed to Upload</button>
   </section>
@@ -93,7 +79,6 @@
     </form>
   </section>
 
-  <!-- Results Section -->
   <section id="results-section" class="hidden">
     <h2>Analysis Results</h2>
     <p>Your analysis results will appear here once processed.</p>
