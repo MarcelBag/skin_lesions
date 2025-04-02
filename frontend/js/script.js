@@ -2,33 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------
     // Sign-Up Handler
     // ---------------------------
-    if (window.location.pathname === '/signup') {
-      const signupForm = document.getElementById('signup-form');
-      if (signupForm) {
-        signupForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          try {
-            const res = await fetch('/api/signup', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name, email, password })
-            });
-            const data = await res.json();
-            if (res.ok) {
-              alert(data.message);
-              window.location.href = '/signin';  // Redirect to signin after successful signup
-            } else {
-              alert(data.message);  // Show error message if signup fails
-            }
-          } catch (error) {
-            console.error('Signup Error:', error);
-            alert('Something went wrong during signup.');
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) {
+      signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        try {
+          const res = await fetch('/api/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            alert(data.message);
+            window.location.href = '/signin';
+          } else {
+            alert(data.message);
           }
-        });
-      }
+        } catch (error) {
+          console.error('Signup Error:', error);
+          alert('Something went wrong during signup.');
+        }
+      });
     }
   
     // ---------------------------
