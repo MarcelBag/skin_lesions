@@ -144,6 +144,72 @@ app.put('/api/user', authMiddleware, async (req, res) => {
   }
 });
 
+// ===========================
+//   Get All Users (Admin only)
+// ===========================
+app.get('/api/users', authMiddleware, async (req, res) => {
+    try {
+      const users = await User.find(); // Fetch all users from MongoDB
+      res.status(200).json(users); // Return the users as a JSON response
+    } catch (err) {
+      console.error('Error fetching users:', err.message);
+      res.status(500).json({ message: 'Server error fetching users.' });
+    }
+  });
+  
+  // ===========================
+  //   Edit User (Admin only)
+  // ===========================
+  app.put('/api/users/:id', authMiddleware, async (req, res) => {
+    try {
+      const { name, email } = req.body;
+      const userId = req.params.id;
+  
+      if (!name || !email) {
+        return res.status(400).json({ message: 'Name and email are required' });
+      }
+  
+      // Find the user by ID
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Update user details
+      user.name = name;
+      user.email = email;
+      await user.save();
+  
+      res.status(200).json({ message: 'User updated successfully!' });
+    } catch (err) {
+      console.error('Error updating user:', err.message);
+      res.status(500).json({ message: 'Server error updating user.' });
+    }
+  });
+  
+  // ===========================
+  //   Delete User (Admin only)
+  // ===========================
+
+// Delete user route
+app.delete('/api/users/:id', authMiddleware, async (req, res) => {
+    try {
+      const userId = req.params.id;
+      
+      // Delete the user by id
+      const user = await User.findByIdAndDelete(userId);
+      
+      if (!user) {
+        return res.status(404).json({ message: 'User not found.' });
+      }
+      
+      res.status(200).json({ message: 'User deleted successfully!' });
+    } catch (err) {
+      console.error('Delete user error:', err.message);
+      res.status(500).json({ message: 'Server error deleting user.' });
+    }
+  });
+  
 
 // ===========================
 //   Serve Frontend Pages
