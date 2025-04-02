@@ -29,7 +29,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+    flex-wrap: wrap; /* Allow wrapping of elements */
 }
 
 header h1 {
@@ -42,6 +42,10 @@ nav ul {
     display: flex;
     justify-content: flex-end;
     margin: 0;
+    position: fixed;
+    top: 10px; /* Adjusted for desired vertical position */
+    right: 10px; /* Adjusted to place it exactly at the right corner */
+    cursor: pointer;
 }
 
 nav ul li {
@@ -61,6 +65,50 @@ nav ul li a {
     padding: 50px;
     background: #f4f4f4;
 }
+
+/* ==========================
+     Media Queries for Responsiveness
+========================== */
+@media (max-width: 768px) {
+    /* For smaller screens */
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav ul {
+        position: fixed; /* Keep position fixed to stay at the corner */
+        top: 10px;
+        right: 10px; /* Ensure it's fixed at the top right corner */
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin-left: 10px;
+    }
+
+    .hero {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* For very small screens */
+    header {
+        padding: 5px;
+    }
+
+    nav ul li {
+        margin-left: 5px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+}
+
 
 /* ==========================
      Content Section
