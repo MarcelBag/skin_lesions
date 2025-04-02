@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/CS/styles.css">
+</head>
+<body>
+
+  <!-- Admin Dashboard Header -->
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="#" id="user-management">User Management</a></li>
+        <li><a href="#" id="image-management">Image Management</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Admin Panel Sidebar -->
+  <aside id="sidebar">
+    <button id="toggle-sidebar" class="toggle-btn">☰</button> <!-- Sidebar toggle button -->
+    <h2>Admin Options</h2>
+    <ul>
+      <li><a href="#" id="view-users">View Users</a></li>
+      <li><a href="#" id="upload-image">Upload Image</a></li>
+      <li><a href="#" id="view-images">View Uploaded Images</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Content will be dynamically injected here based on the selected option -->
+  </main>
+
+  <script src="/JS/script.js"></script>
+
+</body>
+</html>

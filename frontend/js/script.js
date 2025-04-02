@@ -207,3 +207,188 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+
+/* ===========================
+Admin panel
+==============================
+*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/signin';  // Ensure admin is logged in
+        return;
+    }
+
+    // Admin Panel Logic
+    const viewUsersBtn = document.getElementById('view-users');
+    const uploadImageBtn = document.getElementById('upload-image');
+    const viewImagesBtn = document.getElementById('view-images');
+    const sidebar = document.querySelector('aside');
+    const sidebarToggleBtn = document.getElementById('toggle-sidebar');
+
+    // Show users list
+    if (viewUsersBtn) {
+        viewUsersBtn.addEventListener('click', async () => {
+            const res = await fetch('/api/users', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            const data = await res.json();
+            if (res.ok) {
+                let usersTable = '<table><tr><th>Name</th><th>Email</th><th>Actions</th></tr>';
+                data.forEach(user => {
+                    usersTable += `
+                        <tr>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <button onclick="editUser('${user._id}')">Edit</button>
+                                <button onclick="deleteUser('${user._id}')">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                usersTable += '</table>';
+                document.getElementById('main-content').innerHTML = usersTable;
+            } else {
+                alert(data.message);
+            }
+        });
+    }
+
+    // Upload Image
+    if (uploadImageBtn) {
+        uploadImageBtn.addEventListener('click', () => {
+            document.getElementById('main-content').innerHTML = `
+                <h2>Upload Image for Analysis</h2>
+                <form id="upload-form">
+                    <input type="file" name="image" id="image" required>
+                    <button type="submit">Upload</button>
+                </form>
+            `;
+            const uploadForm = document.getElementById('upload-form');
+            uploadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const image = document.getElementById('image').files[0];
+                const formData = new FormData();
+                formData.append('image', image);
+                const res = await fetch('/api/upload', {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + token },
+                    body: formData
+                });
+                const data = await res.json();
+                alert(data.message);
+            });
+        });
+    }
+
+    // View uploaded images
+    if (viewImagesBtn) {
+        viewImagesBtn.addEventListener('click', async () => {
+            const res = await fetch('/api/images', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            const data = await res.json();
+            if (res.ok) {
+                let imagesList = '<h2>Uploaded Images</h2><ul>';
+                data.forEach(image => {
+                    imagesList += `<li><img src="${image.url}" alt="Image" width="100" height="100"></li>`;
+                });
+                imagesList += '</ul>';
+                document.getElementById('main-content').innerHTML = imagesList;
+            } else {
+                alert(data.message);
+            }
+        });
+    }
+
+    // Logout Handler
+    const logoutBtn = document.getElementById('logout');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = '/signin';
+        });
+    }
+
+    // Sidebar toggle functionality
+    sidebarToggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden'); // Toggle sidebar visibility
+        updateSidebarButton(); // Update the button icon
+    });
+
+    // Function to update the sidebar toggle button icon
+    function updateSidebarButton() {
+        if (sidebar.classList.contains('hidden')) {
+            sidebarToggleBtn.innerHTML = '☰'; // Hamburger icon (for closed sidebar)
+        } else {
+            sidebarToggleBtn.innerHTML = '×'; // Close icon (for open sidebar)
+        }
+    }
+    
+    // Initial sidebar button icon state
+    updateSidebarButton();
+});
+
+// Functions for user editing and deleting
+function editUser(userId) {
+    // Logic to edit a user (modal form)
+    const modalContent = `
+        <h3>Edit User</h3>
+        <form id="edit-user-form">
+            <label for="edit-name">Name:</label>
+            <input type="text" id="edit-name" required />
+            <label for="edit-email">Email:</label>
+            <input type="email" id="edit-email" required />
+            <button type="submit">Update User</button>
+        </form>
+    `;
+    document.getElementById('main-content').innerHTML = modalContent;
+
+    const form = document.getElementById('edit-user-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('edit-name').value;
+        const email = document.getElementById('edit-email').value;
+
+        const token = localStorage.getItem('token');
+        const res = await fetch(`/api/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+            body: JSON.stringify({ name, email }),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+            alert(data.message);
+            window.location.href = '/admin'; // Reload the admin panel page
+        } else {
+            alert(data.message);
+        }
+    });
+}
+
+function deleteUser(userId) {
+    const token = localStorage.getItem('token');
+    fetch(`/api/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+                window.location.href = '/admin'; // Reload the admin panel page
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error deleting user.');
+        });
+}
