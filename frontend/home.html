@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home - Image Analysis</title>
   <link rel="stylesheet" href="/CS/styles.css">
 </head>
 <body>
-
-  <!-- Admin Dashboard Header -->
   <header>
     <div class="header-container">
-      <h1>Image Analysis Dashboard</h1>
+      <h1>Dashboard</h1>
+      <!-- User dropdown in top-right -->
       <div class="user-dropdown">
         <div id="user-avatar" class="user-avatar">
           <span id="user-initials">--</span>
@@ -32,6 +30,7 @@
         <span class="close-btn" id="close-settings">&times;</span>
       </div>
       <div class="modal-body">
+        <!-- Update Profile Section -->
         <div id="update-profile">
           <label for="new-name">Change Name:</label>
           <input type="text" id="new-name" placeholder="Enter new name">
@@ -52,7 +51,7 @@
       </div>
     </div>
   </div>
-
+    
   <!-- Guidelines Section -->
   <section class="guidelines">
     <h2>Guidelines</h2>
@@ -62,11 +61,12 @@
       <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
       <li>Click the upload button and submit your image for processing.</li>
     </ul>
-    <button id="proceed-button">Proceed to Upload</button>
   </section>
 
-  <!-- Upload Section -->
-  <section id="upload-section" class="hidden">
+    <!-- ====Upload Section ===========
+     ======Image Upload and Analysis 
+    ==================================== -->
+  <section id="upload-section">
     <h2>Upload Image for Analysis</h2>
     <form id="upload-form">
       <label for="image">Upload Image:</label>
@@ -82,13 +82,15 @@
 
   <section id="results-section" class="hidden">
     <h2>Analysis Results</h2>
-    <div id="analysis-result"></div>
+    <p>Your analysis results will appear here once processed.</p>
+    <div id="results"></div>
   </section>
 
   <footer>
     <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
   </footer>
 
+  <!-- Only include one script reference -->
   <script src="/JS/script.js"></script>
 </body>
 </html>
