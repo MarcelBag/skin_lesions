@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Admin Panel Logic
     const viewUsersBtn = document.getElementById('view-users');
-    const uploadImageBtn = document.getElementById('upload-image');
+    //const uploadImageBtn = document.getElementById('upload-image');
     const viewImagesBtn = document.getElementById('view-images');
   
     // Show users list when the User Management link is clicked
@@ -283,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     // Upload Image
+    /*
     if (uploadImageBtn) {
       uploadImageBtn.addEventListener('click', () => {
         document.getElementById('main-content').innerHTML = `
@@ -328,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-  
+    */
     // Logout Handler
     const logoutBtn = document.getElementById('logout');
     if (logoutBtn) {
