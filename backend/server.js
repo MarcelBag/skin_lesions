@@ -1,8 +1,9 @@
-// backend/server.js
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const multer = require('multer'); // For handling file uploads
+const { exec } = require('child_process'); // To run the Python model
 require('dotenv').config();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -21,6 +22,11 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
+
+// ===========================
+//   File upload setup with multer
+// ===========================
+const upload = multer({ dest: 'uploads/' }); // Save uploaded files to 'uploads' directory
 
 // ===========================
 //   Signup Route
@@ -104,6 +110,46 @@ const authMiddleware = (req, res, next) => {
 };
 
 // ===========================
+// Image Upload and Prediction Route (Flask API Integration)
+// ===========================
+app.post('/api/upload-image', upload.single('image'), async (req, res) => {
+    try {
+      const token = req.headers.authorization.split(' ')[1]; // Extract JWT from request headers
+      if (!req.file) {
+        return res.status(400).json({ message: 'No image uploaded.' });
+      }
+  
+      const formData = new FormData();
+      formData.append('image', fs.createReadStream(req.file.path));  // Send image to Flask API
+  
+      // Send image to the Flask API for prediction
+      const response = await axios.post('http://localhost:5000/predict', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  
+      // Handle Flask response
+      const prediction = response.data.prediction;
+      const confidence = response.data.confidence;
+  
+      // Send prediction data back to the frontend
+      res.json({
+        prediction: prediction,
+        confidence: confidence,
+        analysisType: req.body['analysis-type'] || 'Unknown'
+      });
+  
+    } catch (error) {
+      console.error('Error during image upload or prediction:', error);
+      res.status(500).json({ message: 'Error analyzing the image.' });
+    }
+  });
+  
+
+
+// ===========================
 //   Protected Route
 // ===========================
 app.get('/api/home', authMiddleware, (req, res) => {
@@ -148,68 +194,100 @@ app.put('/api/user', authMiddleware, async (req, res) => {
 //   Get All Users (Admin only)
 // ===========================
 app.get('/api/users', authMiddleware, async (req, res) => {
-    try {
-      const users = await User.find(); // Fetch all users from MongoDB
-      res.status(200).json(users); // Return the users as a JSON response
-    } catch (err) {
-      console.error('Error fetching users:', err.message);
-      res.status(500).json({ message: 'Server error fetching users.' });
-    }
-  });
-  
-  // ===========================
-  //   Edit User (Admin only)
-  // ===========================
-  app.put('/api/users/:id', authMiddleware, async (req, res) => {
-    try {
-      const { name, email } = req.body;
-      const userId = req.params.id;
-  
-      if (!name || !email) {
-        return res.status(400).json({ message: 'Name and email are required' });
-      }
-  
-      // Find the user by ID
-      const user = await User.findById(userId);
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-  
-      // Update user details
-      user.name = name;
-      user.email = email;
-      await user.save();
-  
-      res.status(200).json({ message: 'User updated successfully!' });
-    } catch (err) {
-      console.error('Error updating user:', err.message);
-      res.status(500).json({ message: 'Server error updating user.' });
-    }
-  });
-  
-  // ===========================
-  //   Delete User (Admin only)
-  // ===========================
+  try {
+    const users = await User.find(); // Fetch all users from MongoDB
+    res.status(200).json(users); // Return the users as a JSON response
+  } catch (err) {
+    console.error('Error fetching users:', err.message);
+    res.status(500).json({ message: 'Server error fetching users.' });
+  }
+});
 
-// Delete user route
-app.delete('/api/users/:id', authMiddleware, async (req, res) => {
-    try {
-      const userId = req.params.id;
-      
-      // Delete the user by id
-      const user = await User.findByIdAndDelete(userId);
-      
-      if (!user) {
-        return res.status(404).json({ message: 'User not found.' });
-      }
-      
-      res.status(200).json({ message: 'User deleted successfully!' });
-    } catch (err) {
-      console.error('Delete user error:', err.message);
-      res.status(500).json({ message: 'Server error deleting user.' });
+// ===========================
+//   Edit User (Admin only)
+// ===========================
+app.put('/api/users/:id', authMiddleware, async (req, res) => {
+  try {
+    const { name, email } = req.body;
+    const userId = req.params.id;
+
+    if (!name || !email) {
+      return res.status(400).json({ message: 'Name and email are required' });
     }
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update user details
+    user.name = name;
+    user.email = email;
+    await user.save();
+
+    res.status(200).json({ message: 'User updated successfully!' });
+  } catch (err) {
+    console.error('Error updating user:', err.message);
+    res.status(500).json({ message: 'Server error updating user.' });
+  }
+});
+
+// ===========================
+//   Delete User (Admin only)
+// ===========================
+app.delete('/api/users/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.params.id;
+    
+    // Delete the user by id
+    const user = await User.findByIdAndDelete(userId);
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+    
+    res.status(200).json({ message: 'User deleted successfully!' });
+  } catch (err) {
+    console.error('Delete user error:', err.message);
+    res.status(500).json({ message: 'Server error deleting user.' });
+  }
+});
+
+// ===========================
+//   Image Upload Route (New)
+// ===========================
+app.post('/api/upload-image', authMiddleware, upload.single('image'), async (req, res) => {
+  try {
+    const imagePath = path.join(__dirname, 'uploads', req.file.filename);
+    const analysisType = req.body['analysis-type']; // 'benign' or 'malignant'
+    
+    // Call the Python model to analyze the image
+    const result = await analyzeImage(imagePath, analysisType);
+    
+    res.status(200).json({
+      prediction: result.prediction,
+      confidence: result.confidence,
+    });
+  } catch (error) {
+    console.error('Error during image analysis:', error);
+    res.status(500).json({ message: 'Error analyzing the image.' });
+  }
+});
+
+// Function to run the Python model for image analysis
+function analyzeImage(imagePath, analysisType) {
+  return new Promise((resolve, reject) => {
+    exec(`python3 analyze_image.py --image ${imagePath} --analysis ${analysisType}`, (error, stdout, stderr) => {
+      if (error) {
+        reject('Error executing Python model: ' + stderr);
+        return;
+      }
+      const result = JSON.parse(stdout);
+      resolve(result);
+    });
   });
-  
+}
 
 // ===========================
 //   Serve Frontend Pages
