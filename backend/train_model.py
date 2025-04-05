@@ -32,7 +32,7 @@ train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size=img_size,
     batch_size=batch_size,
-    class_mode='binary'  # Since you have two classes: benign and malignant
+    class_mode='binary'
 )
 
 validation_generator = test_datagen.flow_from_directory(
@@ -52,7 +52,7 @@ model = Sequential([
     MaxPooling2D(2, 2),
     Flatten(),
     Dense(128, activation='relu'),
-    Dense(1, activation='sigmoid')  # Output layer for binary classification
+    Dense(1, activation='sigmoid')
 ])
 
 model.compile(optimizer=Adam(), loss='binary_crossentropy', metrics=['accuracy'])
