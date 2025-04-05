@@ -5,7 +5,7 @@ from PIL import Image
 import io
 
 # Load the saved model
-model = load_model('backend/models/skin_lesion_model.h5')  # Ensure the path is correct
+model = load_model('backend/models/skin_lesion_model.keras')  # Ensure the path is correct
 
 def predict(image_data):
     try:
