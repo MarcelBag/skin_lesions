@@ -103,13 +103,21 @@ app.post('/api/upload-image', authMiddleware, upload.single('image'), async (req
     formData.append('analysis-type', req.body['analysis-type'] || 'Unknown');
 
     // Forward request to the Flask API on port 5000
+    /*
     const response = await axios.post('http://localhost:5000/predict', formData, {
       headers: {
         ...formData.getHeaders(),
         'Authorization': `Bearer ${token}`
       }
     });
-
+    */
+    const response = await axios.post('http://localhost:5001/predict', formData, {
+        headers: {
+          ...formData.getHeaders(),
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
     const { prediction, confidence, analysisType } = response.data;
     res.json({ prediction, confidence, analysisType });
   } catch (error) {
@@ -216,3 +224,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+
