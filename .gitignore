@@ -35,6 +35,9 @@ torch/
 *.pth
 *.tflite
 *.onnx
+*.keras
+*.model
+*.hdf5
 
 # Environment file
 .env
