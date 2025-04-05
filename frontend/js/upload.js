@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const uploadForm = document.getElementById('upload-form');
+    
+    // Check if the form exists before proceeding
+    if (!uploadForm) {
+      console.error('Upload form not found!');
+      return;
+    }
+    
     const resultsSection = document.getElementById('results-section');
     const resultsContainer = document.getElementById('results');
     
@@ -15,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('analysis-type', analysisType);
   
       try {
-        // Send the image to the backend for process and prediction
-        const res = await fetch('/api/upload-image', {
+        // Send the image to the backend
+        const res = await fetch('http://localhost:5000/predict', {
           method: 'POST',
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token') // Include token
           },
           body: formData
         });
-        
+  
         const data = await res.json();
         if (res.ok) {
           // Display analysis results

@@ -23,6 +23,16 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+
+const corsOptions = {
+    origin: 'http://localhost:3000', // Allow only the frontend to access the backend
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  
+  app.use(cors(corsOptions));
+  
+
 // ===========================
 //   File upload setup with multer
 // ===========================

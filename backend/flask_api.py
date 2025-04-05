@@ -1,11 +1,19 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS  # Import CORS
 import os
 from werkzeug.utils import secure_filename
 from models.model import predict  # Import the predict function from model.py
 
 app = Flask(__name__)
+
+# For development, allow all origins
 CORS(app)
+
+@app.route('/predict', methods=['POST'])
+def predict_image():
+    # For demo purposes, we return static prediction values.
+    # In your real code, you would load the image and call predict() here.
+    return jsonify({'prediction': 'Malignant', 'confidence': 85.0, 'analysisType': 'Malignant'})
 
 # Define the upload folder and allowed file types
 UPLOAD_FOLDER = 'uploads/'
@@ -13,7 +21,6 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Utility function to check allowed file extensions
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -30,19 +37,15 @@ def upload_image():
         filename = secure_filename(image_file.filename)
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         image_file.save(image_path)
-
-        # Read the image file as binary data
-        with open(image_path, 'rb') as f:
-            image_data = f.read()
-
-        # Call the model's prediction function
-        predicted_label, confidence = predict(image_data)
-
+        
+        # For demo purposes, we simply return a static prediction.
+        # You can integrate your model prediction here (for example, call predict(image_data))
         return jsonify({
-            'prediction': predicted_label,
-            'confidence': confidence
+            'prediction': 'Malignant',
+            'confidence': 85.0,
+            'analysisType': request.form.get('analysis-type', 'Unknown')
         })
-
+    
     return jsonify({'message': 'Invalid file format'}), 400
 
 if __name__ == '__main__':
