@@ -35,8 +35,21 @@ app.use(cors(corsOptions));
 // ----------------------------
 // File upload setup with multer
 // ----------------------------
-const upload = multer({ dest: 'uploads/' });
-
+//const upload = multer({ dest: 'uploads/' });
+// Custom storage engine using multer (do not re-require multer)
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+      // Use the original file name to preserve the extension
+      cb(null, file.originalname);
+    }
+  });
+  
+  // Update the upload variable to use the custom storage
+  const upload = multer({ storage });
+  
 // ----------------------------
 // Signup Route
 // ----------------------------

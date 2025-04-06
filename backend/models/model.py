@@ -1,38 +1,28 @@
-import tensorflow as tf
-from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
-import io
+from tensorflow.keras.models import load_model
+import os
 
-# Load the saved model
-model = load_model('backend/models/skin_lesion_model.keras')  # Ensure the path is correct
+# Update the path: from backend/models/model.py, go up one level then into backend/models/
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '../backend/models/skin_lesion_model.keras')
+model = load_model(MODEL_PATH)
 
-def predict(image_data):
-    try:
-        # Convert image to the format required by your model
-        img = Image.open(io.BytesIO(image_data))
-        img = img.resize((224, 224))  # Resize to the model's expected input size
-        img_array = np.array(img)
+def preprocess_image(image_path, target_size=(224, 224)):
+    image = Image.open(image_path).convert('RGB')
+    image = image.resize(target_size)
+    image_array = np.array(image) / 255.0  # Normalize to [0,1]
+    image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
+    return image_array
 
-        # Normalize the image if needed (example for normalization)
-        img_array = img_array / 255.0  # Normalize the pixel values to [0, 1]
-
-        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
-
-        # Perform prediction
-        prediction = model.predict(img_array)
-
-        # Assuming binary classification, we'll get the probability
-        # You can adjust this for multi-class classification
-        predicted_class = np.argmax(prediction, axis=1)[0]  # Get the predicted class (0 or 1 for binary)
-        confidence = 100 * np.max(prediction)  # Get the confidence of the prediction
-
-        # If you have more than 2 classes, you may want to map the predicted class back to a label
-        class_names = ["Benign", "Malignant"]  # Modify according to your model
-        predicted_label = class_names[predicted_class]
-
-        return predicted_label, confidence
-
-    except Exception as e:
-        print(f"Error during prediction: {e}")
-        return "Error", 0
+def predict(image_path):
+    image_array = preprocess_image(image_path)
+    prediction = model.predict(image_array)
+    # Assuming the model outputs a probability where >= 0.5 means "Malignant"
+    if prediction[0][0] >= 0.5:
+        label = 'Malignant'
+        confidence = prediction[0][0] * 100
+    else:
+        label = 'Benign'
+        confidence = (1 - prediction[0][0]) * 100
+     # Converting confidence to a native Python float
+    return label, float (round(confidence, 2))
