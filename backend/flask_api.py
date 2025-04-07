@@ -2,12 +2,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
-from models.model import predict  # Import the predict function
+from models.model import predict  # Import our updated predict function
 
 app = Flask(__name__)
 CORS(app)
 
-# Define the upload folder and allowed file types
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -29,13 +28,17 @@ def predict_image():
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         image_file.save(image_path)
 
-        # Call the prediction function from your model module
-        predicted_label, confidence = predict(image_path)
+        # Call our prediction function
+        predicted_label, result = predict(image_path)
+
+        if predicted_label == "Invalid":
+            # The image does not seem to be a skin image
+            return jsonify({'message': result}), 400
 
         return jsonify({
             'prediction': predicted_label,
-            'confidence': confidence,
-            'analysisType': predicted_label  # or any other logic you'd like to include
+            'confidence': result,
+            'analysisType': predicted_label  # You can customize this as needed
         })
     return jsonify({'message': 'Invalid file format'}), 400
 
