@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Function to show error modal
+    function showErrorModal(message) {
+      const modal = document.getElementById('error-modal');
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.textContent = message;
+      modal.classList.remove('hidden');
+    }
+  
+    // Function to hide error modal
+    function hideErrorModal() {
+      const modal = document.getElementById('error-modal');
+      modal.classList.add('hidden');
+    }
+  
+    // Attach event listener to close the error modal
+    const closeErrorBtn = document.getElementById('close-error');
+    if (closeErrorBtn) {
+      closeErrorBtn.addEventListener('click', hideErrorModal);
+    }
+    
     const uploadForm = document.getElementById('upload-form');
     if (!uploadForm) {
       console.error('Upload form not found!');
@@ -19,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('analysis-type', analysisType);
     
       try {
-        // Now using the Express endpoint (same origin) to avoid CORS issues.
         const res = await fetch('/api/upload-image', {
           method: 'POST',
           headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
@@ -35,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Confidence: ${data.confidence}%</p>
           `;
         } else {
-          alert('Error analyzing the image: ' + data.message);
+          showErrorModal('Error analyzing the image: ' + data.message);
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Something went wrong during image upload.');
+        showErrorModal('Something went wrong during image upload.');
       }
     });
   });
