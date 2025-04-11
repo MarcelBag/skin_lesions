@@ -620,7 +620,13 @@ th {
     display: none;
   }
   
-
+/* Modal icon styling */
+.modal-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
 /* ==========================
    managing side by styles    
 ========================== */
