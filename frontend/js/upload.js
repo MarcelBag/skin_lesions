@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to show error modal
     function showErrorModal(message) {
       const modal = document.getElementById('error-modal');
       const errorMessage = document.getElementById('error-message');
@@ -7,13 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.classList.remove('hidden');
     }
   
-    // Function to hide error modal
     function hideErrorModal() {
       const modal = document.getElementById('error-modal');
       modal.classList.add('hidden');
     }
   
-    // Attach event listener to close the error modal
     const closeErrorBtn = document.getElementById('close-error');
     if (closeErrorBtn) {
       closeErrorBtn.addEventListener('click', hideErrorModal);
@@ -32,11 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       
       const image = document.getElementById('image').files[0];
-      const analysisType = document.getElementById('analysis-type').value;
-    
+      if (!image) {
+        showErrorModal('Please select an image.');
+        return;
+      }
+      
       const formData = new FormData();
       formData.append('image', image);
-      formData.append('analysis-type', analysisType);
     
       try {
         const res = await fetch('/api/upload-image', {
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           resultsSection.classList.remove('hidden');
           resultsContainer.innerHTML = `
-            <h3>Analysis Type: ${data.analysisType}</h3>
+            <h3>Analysis Type: ${data.analysisType || 'Predicted'}</h3>
             <p>Prediction: ${data.prediction}</p>
             <p>Confidence: ${data.confidence}%</p>
           `;
