@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>Analysis Type: ${data.analysisType || 'Predicted'}</h3>
             <p>Prediction: ${data.prediction}</p>
             <p>Confidence: ${data.confidence}%</p>
+            <p>Melanoma is a cancer that develops from melanocytes, the cells that give skin its color </p>
+            <p>While </p>
+            <p>Benign is not harmful or severe, or not cancerous</p>
           `;
         } else {
           showErrorModal('Error analyzing the image: ' + data.message);
