@@ -54,6 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Melanoma is a cancer that develops from melanocytes, the cells that give skin its color </p>
             <p>While </p>
             <p>Benign is not harmful or severe, or not cancerous</p>
+            <p> 
+            Thus results are still on prediction and probability, please consult a doctor for further analysis.
+
+
+
+            </p>
           `;
         } else {
           showErrorModal('Error analyzing the image: ' + data.message);
