@@ -28,17 +28,14 @@ def predict_image():
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         image_file.save(image_path)
 
-        # Call our prediction function
         predicted_label, result = predict(image_path)
-
         if predicted_label == "Invalid":
-            # The image does not seem to be a skin image
             return jsonify({'message': result}), 400
 
         return jsonify({
             'prediction': predicted_label,
             'confidence': result,
-            'analysisType': predicted_label  # You can customize this as needed
+            'analysisType': predicted_label  # For reference, you can label it "Predicted"
         })
     return jsonify({'message': 'Invalid file format'}), 400
 
