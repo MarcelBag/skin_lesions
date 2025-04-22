@@ -4,6 +4,8 @@ import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
 from ultralytics import YOLO  # Install via: pip install ultralytics
+from .segmentation_model import segment_lesion  # our new function
+
 
 # ------------------------------------------------------------------
 # Load Models
