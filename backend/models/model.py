@@ -100,6 +100,12 @@ def predict(image_path):
     if not is_skin_color_image(image_path, skin_threshold=0.2):
         return "Invalid", "Please post a valid skin image (insufficient skin tone detected)."
     
+      # ** New Step **: segment the lesion and crop
+    cropped = segment_lesion(image_path)   # returns a (224×224×3) numpy array
+    # Normalize and expand dims
+    img_arr = cropped.astype('float32')/255.0
+    img_arr = np.expand_dims(img_arr, 0)
+    
     # Step 4: Run lesion detection using your model.
     image_array = preprocess_image(image_path)
     prediction = lesion_model.predict(image_array)
