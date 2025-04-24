@@ -107,6 +107,7 @@ def predict(image_path):
     img_arr = np.expand_dims(img_arr, 0)
     
     # Step 4: Run lesion detection using your model.
+    ''' 
     image_array = preprocess_image(image_path)
     prediction = lesion_model.predict(image_array)
     if prediction[0][0] >= 0.5:
@@ -116,3 +117,9 @@ def predict(image_path):
         label = "Benign"
         confidence = (1 - prediction[0][0]) * 100
     return label, float(round(confidence, 2))
+    ''' 
+     # 4) Final lesion prediction
+    pred = lesion_model.predict(img_arr)[0][0]
+    label = 'Malignant' if pred>=0.5 else 'Benign'
+    confidence = float(round((pred if pred>=0.5 else (1-pred))*100,2))
+    return label, confidence
