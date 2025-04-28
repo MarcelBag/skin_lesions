@@ -8,61 +8,72 @@
 </head>
 <body>
   <header>
-    <div class="menu">
+    <div class="container">
       <h1>Welcome to Our Image Analysis</h1>
       <nav>
-        <ul>
+        <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a href="signin.html">Sign in</a></li>
+          <li><a href="signin.html">Sign In</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="hero">
-      <h2>Welcome to Our Image Analysis</h2>
-    </div>
-<br>
-    <div class="hero">
-        <h2>Health diasginisis if conducted carefully will save many lives and that is our aim</h2>
-        <p> Health and especially cancer diagnosis if well and early diasginisis it will be great and life saving</p>
-        <p>We live in the world where, we can only assist others by our open heart and bearing their suffering and supporting them</p>
+    <section class="hero">
+      <div class="container">
+        <h2>Empowering Early Diagnosis through Image Analysis</h2>
       </div>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+        <h2>Saving Lives through Accurate Health Diagnosis</h2>
+        <p>Health, and especially cancer diagnosis, if conducted early and carefully, can save countless lives and that is our mission.</p>
+        <p>We live in a world where true assistance comes from open hearts, bearing others' suffering, and offering support when it matters most.</p>
+      </div>
+    </section>
 
     <section class="content">
-      <!-- Upload section (visible only when logged in) -->
-      <div id="upload-section" class="hidden">
-        <h2>Upload Your Image</h2>
-        <form id="upload-form">
-          <label for="image">Choose an image:</label>
-          <input type="file" id="image" name="image" accept="image/*" required>
-          
-          <label for="analysis">Select Analysis Type:</label>
-          <select id="analysis" name="analysis">
-            <option value="skin_cancer">Skin Cancer Detection</option>
-          </select>
-          
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <div class="container">
+        <!-- Upload Section (Visible only when logged in) -->
+        <div id="upload-section" class="hidden">
+          <h2>Upload Your Image</h2>
+          <form id="upload-form">
+            <div class="form-group">
+              <label for="image">Choose an image:</label>
+              <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
 
-      <!-- Results section -->
-      <div id="results-section" class="hidden">
-        <h2>Analysis Results</h2>
-        <p>Your image has been analyzed. Results will be displayed here soon!</p>
+            <div class="form-group">
+              <label for="analysis">Select Analysis Type:</label>
+              <select id="analysis" name="analysis" required>
+                <option value="skin_cancer">Skin Cancer Detection</option>
+              </select>
+            </div>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="hidden">
+          <h2>Analysis Results</h2>
+          <p>Your image has been analyzed. Results will appear here soon!</p>
+        </div>
       </div>
     </section>
   </main>
 
-
   <footer>
-    <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
+    <div class="container">
+      <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
+    </div>
   </footer>
-  
-  <!-- Include Firebase SDK and our script -->
+
+  <!-- Include Firebase SDK and project scripts -->
   <script type="module" src="/js/script.js"></script>
 </body>
 </html>
