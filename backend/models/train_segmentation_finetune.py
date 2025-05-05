@@ -15,3 +15,10 @@ for layer in model.layers:
         layer.trainable = True
     else:
         layer.trainable = False
+
+# 3. Compile with a lower learning rate
+model.compile(
+    optimizer=Adam(learning_rate=1e-5),
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
