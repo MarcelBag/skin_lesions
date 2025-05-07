@@ -35,3 +35,16 @@ img_datagen = ImageDataGenerator(
     horizontal_flip=True,
     validation_split=0.2
 )
+mask_datagen = ImageDataGenerator(
+    rescale=1./255,
+    validation_split=0.2
+)
+train_img_gen = img_datagen.flow_from_directory(
+    data_dir,
+    classes=['images'],
+    target_size=img_size,
+    batch_size=batch_size,
+    class_mode=None,
+    seed=42,
+    subset='training'
+)
