@@ -67,3 +67,8 @@ mask_datagen = ImageDataGenerator(
     horizontal_flip=True,
     validation_split=0.2
 )
+seed = 42
+img_gen = img_datagen.flow_from_directory(
+    data_dir + '/images', classes=['.'], class_mode=None,
+    target_size=img_size, batch_size=batch_size, subset='training', seed=seed
+)
