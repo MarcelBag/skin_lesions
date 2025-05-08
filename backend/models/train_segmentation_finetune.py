@@ -27,6 +27,7 @@ data_dir = 'data_segmentation'  # folder with /images and /masks subfolders
 img_size = (224,224)
 batch_size = 8
 
+"""""
 img_datagen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=20,
@@ -47,4 +48,22 @@ train_img_gen = img_datagen.flow_from_directory(
     class_mode=None,
     seed=42,
     subset='training'
+)
+"""
+img_datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    validation_split=0.2
+)
+
+mask_datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    validation_split=0.2
 )
