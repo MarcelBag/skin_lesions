@@ -72,3 +72,10 @@ img_gen = img_datagen.flow_from_directory(
     data_dir + '/images', classes=['.'], class_mode=None,
     target_size=img_size, batch_size=batch_size, subset='training', seed=seed
 )
+
+train_gen = zip(img_gen, mask_gen)
+
+val_img_gen = img_datagen.flow_from_directory(
+    data_dir + '/images', classes=['.'], class_mode=None,
+    target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
+)
