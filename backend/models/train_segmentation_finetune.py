@@ -79,3 +79,9 @@ val_img_gen = img_datagen.flow_from_directory(
     data_dir + '/images', classes=['.'], class_mode=None,
     target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
 )
+
+val_mask_gen = mask_datagen.flow_from_directory(
+    data_dir + '/masks', classes=['.'], class_mode=None,
+    target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
+)
+val_gen = zip(val_img_gen, val_mask_gen)
