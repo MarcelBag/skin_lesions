@@ -85,3 +85,10 @@ val_mask_gen = mask_datagen.flow_from_directory(
     target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
 )
 val_gen = zip(val_img_gen, val_mask_gen)
+
+# 5. Callbacks
+callbacks = [
+    ModelCheckpoint(model_path, save_best_only=True, monitor='val_loss'),
+    ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-7),
+    EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+]
