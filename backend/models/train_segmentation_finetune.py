@@ -92,3 +92,13 @@ callbacks = [
     ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-7),
     EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 ]
+
+# 6. Continue training
+model.fit(
+    train_gen,
+    steps_per_epoch=len(img_gen),
+    validation_data=val_gen,
+    validation_steps=len(val_img_gen),
+    epochs=30,
+    callbacks=callbacks
+)
