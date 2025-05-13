@@ -6,3 +6,7 @@ from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+# 1. Build base model
+base = EfficientNetB0(weights='imagenet', include_top=False, input_shape=(224,224,3))
+x = GlobalAveragePooling2D()(base.output)
