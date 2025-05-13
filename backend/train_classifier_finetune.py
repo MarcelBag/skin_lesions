@@ -10,3 +10,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 # 1. Build base model
 base = EfficientNetB0(weights='imagenet', include_top=False, input_shape=(224,224,3))
 x = GlobalAveragePooling2D()(base.output)
+
+x = Dropout(0.3)(x)
+preds = Dense(1, activation='sigmoid')(x)
+model = Model(inputs=base.input, outputs=preds)
