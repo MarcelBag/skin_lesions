@@ -14,3 +14,9 @@ x = GlobalAveragePooling2D()(base.output)
 x = Dropout(0.3)(x)
 preds = Dense(1, activation='sigmoid')(x)
 model = Model(inputs=base.input, outputs=preds)
+
+# 2. Freeze all layers initially
+for layer in base.layers:
+    layer.trainable = False
+
+model.compile(optimizer=Adam(1e-3), loss='binary_crossentropy', metrics=['accuracy'])
