@@ -18,5 +18,4 @@ model = Model(inputs=base.input, outputs=preds)
 # 2. Freeze all layers initially
 for layer in base.layers:
     layer.trainable = False
-
 model.compile(optimizer=Adam(1e-3), loss='binary_crossentropy', metrics=['accuracy'])
