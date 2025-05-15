@@ -25,3 +25,12 @@ model.compile(optimizer=Adam(1e-3), loss='binary_crossentropy', metrics=['accura
 data_dir = 'data_classifier'
 img_size = (224,224)
 batch_size = 16
+
+datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    validation_split=0.2
+)
