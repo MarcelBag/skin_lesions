@@ -19,3 +19,9 @@ model = Model(inputs=base.input, outputs=preds)
 for layer in base.layers:
     layer.trainable = False
 model.compile(optimizer=Adam(1e-3), loss='binary_crossentropy', metrics=['accuracy'])
+
+# 3. Data generators load from cropped directories
+# Assume you have pre-cropped and saved lesion images into data_classifier/skin and /nonskin
+data_dir = 'data_classifier'
+img_size = (224,224)
+batch_size = 16
