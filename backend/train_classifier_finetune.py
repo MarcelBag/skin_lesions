@@ -34,3 +34,11 @@ datagen = ImageDataGenerator(
     horizontal_flip=True,
     validation_split=0.2
 )
+
+train_gen = datagen.flow_from_directory(
+    data_dir,
+    target_size=img_size,
+    batch_size=batch_size,
+    class_mode='binary',
+    subset='training'
+)
