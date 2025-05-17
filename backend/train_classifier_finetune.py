@@ -50,3 +50,8 @@ val_gen = datagen.flow_from_directory(
     class_mode='binary',
     subset='validation'
 )
+callbacks = [
+    ModelCheckpoint('backend/models/skin_classifier.keras', save_best_only=True, monitor='val_loss'),
+    ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=3, min_lr=1e-6),
+    EarlyStopping(monitor='val_loss', patience=6, restore_best_weights=True)
+]
