@@ -42,3 +42,11 @@ train_gen = datagen.flow_from_directory(
     class_mode='binary',
     subset='training'
 )
+
+val_gen = datagen.flow_from_directory(
+    data_dir,
+    target_size=img_size,
+    batch_size=batch_size,
+    class_mode='binary',
+    subset='validation'
+)
