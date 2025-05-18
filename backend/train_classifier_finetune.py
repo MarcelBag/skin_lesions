@@ -55,3 +55,10 @@ callbacks = [
     ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=3, min_lr=1e-6),
     EarlyStopping(monitor='val_loss', patience=6, restore_best_weights=True)
 ]
+
+# 4. Train head only
+model.fit(train_gen, validation_data=val_gen, epochs=10, callbacks=callbacks)
+
+# 5. Unfreeze top layers and continue fine-tuning
+for layer in base.layers[-20:]:
+    layer.trainable = True
