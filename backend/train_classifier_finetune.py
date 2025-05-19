@@ -64,3 +64,4 @@ for layer in base.layers[-20:]:
     layer.trainable = True
 
 model.compile(optimizer=Adam(1e-5), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(train_gen, validation_data=val_gen, epochs=15, callbacks=callbacks)
