@@ -96,7 +96,6 @@ val_mask_gen = mask_datagen.flow_from_directory(
     data_dir + '/masks', classes=['.'], class_mode=None,
     target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
 )
-val_gen = zip(val_img_gen, val_mask_gen)
 
 # 5. Callbacks
 callbacks = [
@@ -104,10 +103,12 @@ callbacks = [
     ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-7),
     EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 ]
-# defining model train gen
-train_gen = zip(img_gen, mask_gen)
 
-# 6. Continue training
+# 6. Combine generators
+train_gen = zip(img_gen, mask_gen)
+val_gen = zip(val_img_gen, val_mask_gen)
+
+# 7. Continue training
 model.fit(
     train_gen,
     steps_per_epoch=len(img_gen),
@@ -115,7 +116,4 @@ model.fit(
     validation_steps=len(val_img_gen),
     epochs=30,
     callbacks=callbacks
-    val_gen = zip(val_img_gen, val_mask_gen)
-    train_gen = zip(img_gen, mask_gen)
-
 )
