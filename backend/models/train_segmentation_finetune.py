@@ -71,9 +71,14 @@ mask_datagen = ImageDataGenerator(
 )
 seed = 42
 img_gen = img_datagen.flow_from_directory(
-    data_dir + '/images', classes=['.'], class_mode=None,
-    target_size=img_size, batch_size=batch_size, subset='training', seed=seed
+    data_dir + '/images',
+    class_mode=None,
+    target_size=img_size,
+    batch_size=batch_size,
+    subset='training',
+    seed=seed
 )
+
 
 #train_gen = zip(img_gen, mask_gen)
 
@@ -99,6 +104,8 @@ callbacks = [
     ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-7),
     EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 ]
+# defining model train gen
+train_gen = zip(img_gen, mask_gen)
 
 # 6. Continue training
 model.fit(
@@ -108,4 +115,7 @@ model.fit(
     validation_steps=len(val_img_gen),
     epochs=30,
     callbacks=callbacks
+    val_gen = zip(val_img_gen, val_mask_gen)
+    train_gen = zip(img_gen, mask_gen)
+
 )
