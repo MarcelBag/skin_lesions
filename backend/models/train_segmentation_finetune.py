@@ -5,7 +5,9 @@ from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, Early
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # 1. Load the existing model
-model_path = 'backend/models/skin_segmentation_model.keras'
+#model_path = 'backend/models/skin_segmentation_model.keras'
+model_path = 'skin_lesion_model.keras'
+
 model = load_model(model_path)
 
 # 2. Unfreeze last two encoder blocks for fine-tuning
@@ -73,7 +75,12 @@ img_gen = img_datagen.flow_from_directory(
     target_size=img_size, batch_size=batch_size, subset='training', seed=seed
 )
 
-train_gen = zip(img_gen, mask_gen)
+#train_gen = zip(img_gen, mask_gen)
+
+mask_gen = mask_datagen.flow_from_directory(
+    data_dir + '/masks', classes=['.'], class_mode=None,
+    target_size=img_size, batch_size=batch_size, subset='training', seed=seed
+)
 
 val_img_gen = img_datagen.flow_from_directory(
     data_dir + '/images', classes=['.'], class_mode=None,
