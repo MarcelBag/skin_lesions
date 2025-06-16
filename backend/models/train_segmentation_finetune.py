@@ -1,3 +1,4 @@
+#backend/models/train_segmentation_finetune.py
 import os
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
@@ -71,7 +72,8 @@ mask_datagen = ImageDataGenerator(
 )
 seed = 42
 img_gen = img_datagen.flow_from_directory(
-    data_dir + '/images',
+   # data_dir + '/images',
+    data_dir = '../data_segmentation'
     class_mode=None,
     target_size=img_size,
     batch_size=batch_size,
@@ -83,19 +85,37 @@ img_gen = img_datagen.flow_from_directory(
 #train_gen = zip(img_gen, mask_gen)
 
 mask_gen = mask_datagen.flow_from_directory(
-    data_dir + '/masks', classes=['.'], class_mode=None,
-    target_size=img_size, batch_size=batch_size, subset='training', seed=seed
+   # data_dir + '/masks',
+    data_dir = '../data_segmentation',
+    class_mode=None,
+    target_size=img_size,
+    batch_size=batch_size,
+    subset='training',
+    seed=seed
 )
+
+# 👇 move this assignment outside any function call
+
 
 val_img_gen = img_datagen.flow_from_directory(
-    data_dir + '/images', classes=['.'], class_mode=None,
-    target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
+    data_dir = '../data_segmentation',
+    class_mode=None,
+    target_size=img_size,
+    batch_size=batch_size,
+    subset='validation',
+    seed=seed
 )
 
+
 val_mask_gen = mask_datagen.flow_from_directory(
-    data_dir + '/masks', classes=['.'], class_mode=None,
-    target_size=img_size, batch_size=batch_size, subset='validation', seed=seed
+    data_dir + '/masks',
+    class_mode=None,
+    target_size=img_size,
+    batch_size=batch_size,
+    subset='validation',
+    seed=seed
 )
+
 
 # 5. Callbacks
 callbacks = [
