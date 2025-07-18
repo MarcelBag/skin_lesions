@@ -49,6 +49,7 @@ skin_lesions/
 │   │   ├── segmentation_model.py
 │   │   ├── skin_lesion_model.h5
 │   │   ├── skin_lesion_model.keras
+│   │   ├── skin_classifier.keras
 │   │   ├── train_segmentation_finetune.py
 │   │   └── user.js
 │   ├── flask_api.py
