@@ -146,7 +146,7 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 
 ### How it works
-- Frontend*** (React or vanilla HTML/JS) lets user upload image.
+- * * Frontend (React or vanilla HTML/JS) *** lets user upload image.
 
 - Express backend receives, stores image, forwards to Flask for ML prediction.
 
