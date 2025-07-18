@@ -134,6 +134,16 @@ python app.py
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
+### Key files
+
+``` backend/flask_api.py ``` [Python] Flask API for ML predictions
+
+```backend/server.js ``` [Node.js] Auth, user mgmt, image proxying to Flask
+
+```backend/models/model.py ``` Prediction/classification pipeline
+
+```backend/models/segmentation_model.py```U-Net segmentation
+
 ---
 
 ## 🧠 Model Details
