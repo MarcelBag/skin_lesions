@@ -3,8 +3,8 @@ import cv2
 import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
-from ultralytics import YOLO  # Install via: pip install ultralytics
-from .segmentation_model import segment_lesion  # our new function
+from ultralytics import YOLO  # please instal thInstall via: pip install ultralytics
+from .segmentation_model import segment_lesion 
 import os
 
 # ------------------------------------------------------------------

@@ -1,671 +1,299 @@
 /* ==========================
-   General Styles
+    General Layout and Reset
 ========================== */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: #f7fafc;
+    color: #222;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure the page takes full height and columns flow as intended */
+  body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
-}
-
-main {
-    flex: 1;
-}
-
-.hidden {
-    display: none;
-}
-
-/* ==========================
-     Header Styles
-========================== */
-header {
-    background: #333;
+  }
+  
+  /* ==========================
+      Header
+  ========================== */
+  header {
+    background: #232a32;
     color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Allow wrapping of elements */
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    position: fixed;
-    top: 10px; /* Adjusted for desired vertical position */
-    right: 10px; /* Adjusted to place it exactly at the right corner */
-    cursor: pointer;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* ==========================
-     Hero Section
-========================== */
-.hero {
-    text-align: center;
-    padding: 50px;
-    background: #f4f4f4;
-}
-
-/* ==========================
-     Media Queries for Responsiveness
-========================== */
-@media (max-width: 768px) {
-    /* For smaller screens */
-    header {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    nav ul {
-        position: fixed; /* Keep position fixed to stay at the corner */
-        top: 10px;
-        right: 10px; /* Ensure it's fixed at the top right corner */
-        justify-content: flex-end;
-        margin-top: 10px;
-    }
-
-    nav ul li {
-        margin-left: 10px;
-    }
-
-    .hero {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* For very small screens */
-    header {
-        padding: 5px;
-    }
-
-    nav ul li {
-        margin-left: 5px;
-    }
-
-    .hero {
-        padding: 20px;
-    }
-}
-
-
-/* ==========================
-     Content Section
-========================== */
-.content {
-    padding: 20px;
-}
-
-.row {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.column {
-    flex: 1;
-    margin: 10px;
-    text-align: center;
-}
-
-.column img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-}
-
-/* ==========================
-     Form Styles
-========================== */
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
+    padding: 0.7rem 0;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+  }
+  .header-container {
+    max-width: 1200px;
     margin: 0 auto;
-}
-
-form label,
-form input,
-form select,
-form button {
-    margin-bottom: 10px;
-}
-
-/* ==========================
-     Footer Styles
-========================== */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    font-size: 14px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-/* ==========================
-     Sign-Up and Sign-In Form Styles
-========================== */
-.signup-container,
-.signin-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #f4f4f4;
-}
-
-.signup-form,
-.signin-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-}
-
-.signup-form h2,
-.signin-form h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.signup-form label,
-.signin-form label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.signup-form input,
-.signin-form input {
-    width: 95%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.signup-form button,
-.signin-form button {
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
-}
-
-.signup-form button:hover,
-.signin-form button:hover {
-    background: #0056b3;
-}
-
-.signup-link,
-.signin-link {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.signup-link a,
-.signin-link a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.signup-link a:hover,
-.signin-link a:hover {
-    text-decoration: underline;
-}
-
-/* ==========================
-     Home Page Specific Styles
-========================== */
-.guidelines {
-    text-align: center;
-    margin: 30px 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.guidelines h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.guidelines p,
-.guidelines ul {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.guidelines button {
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
-}
-
-.guidelines button:hover {
-    background: #0056b3;
-}
-
-#upload-section {
-    text-align: center;
-    margin: 30px 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#upload-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#upload-section label {
-    font-weight: bold;
-    margin-top: 15px;
-    display: block;
-}
-
-#upload-section input,
-#upload-section select,
-#upload-section button {
-    width: 70%;
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-#upload-section button {
-    background: #28a745;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-#upload-section button:hover {
-    background: #218838;
-}
-
-#results-section {
-    text-align: center;
-    margin: 30px 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#results-section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-#results-section p {
-    font-size: 16px;
-    color: #555;
-}
-
-/* ==========================
-   User Dropdown and Modal Styles
-========================== */
-.user-dropdown {
-  position: relative;
-  cursor: pointer;
-}
-
-/* Position the avatar absolutely within the parent container */
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #555;
+    justify-content: space-between;
+    padding: 0 1.6rem;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  
+  /* ==========================
+      Avatar and User Dropdown
+  ========================== */
+  .user-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .user-avatar {
+    width: 44px;
+    height: 44px;
+    background: #2497f3;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 1.25rem;
     color: #fff;
-    position: fixed;
-    top: 10px; /* Adjust this to control the vertical position */
-    right: 10px; /* Adjust this to control the horizontal position */
+    box-shadow: 0 2px 6px rgba(44, 62, 80, 0.13);
     cursor: pointer;
+    user-select: none;
+    transition: box-shadow 0.12s;
+  }
+  .user-avatar:hover,
+  .user-avatar:focus {
+    box-shadow: 0 2px 8px #2497f38a;
   }
   
-.user-menu {
-  position: fixed;
-  top: 45px;
-  right: 0;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  min-width: 150px;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  
-}
-
-.user-menu button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-}
-
-.user-menu button:hover {
-  background-color: #f0f0f0;
-}
-
-/* Modal for settings */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 6px;
-  width: 300px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 9999;
-}
-
-/* Ensure modal is hidden when the hidden class is added */
-.hidden {
-  display: none;
-}
-
-/* ==========================
-   Dark Mode Styles (if applicable)
-========================== */
-body.dark-theme {
-  background-color: #121212;
-  color: #fff;
-}
-
-body.dark-theme header {
-  background-color: #1d1d1d;
-}
-
-body.dark-theme .user-avatar {
-  background-color: #777;
-}
-
-body.dark-theme .user-menu {
-  background-color: #1d1d1d;
-}
-
-body.dark-theme .user-menu button {
-  color: #fff;
-}
-
-/* ==========================
-   Admin Panel Styles
-========================== */
-body {
-    font-family: Arial, sans-serif;
+  /* Popover User Menu */
+  .user-menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #232a32;
+    color: #fff;
+    border-radius: 10px;
+    min-width: 165px;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.15);
+    overflow: hidden;
+    display: none;
+    z-index: 999;
+    transition: opacity 0.16s;
+  }
+  .user-menu:not(.hidden) {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #333;
+  }
+  .user-menu button {
+    background: none;
+    border: none;
     color: #fff;
-    padding: 10px 20px;
+    padding: 14px 22px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .user-menu button:hover {
+    background: #2497f3;
+    color: #fff;
+  }
+  
+  /* ==========================
+      Card-Like Content
+  ========================== */
+  .guidelines, #upload-section, #results-section {
+    margin: 2.5rem auto 0 auto;
+    padding: 2rem 2.2rem;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px 0 rgba(34,51,84,0.08);
+    max-width: 900px;
+    width: 90%;
+  }
+  
+  .guidelines {
+    margin-top: 2.6rem;
+  }
+  .guidelines h2, #upload-section h2, #results-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  .guidelines ul, .guidelines p {
+    text-align: left;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  #upload-section {
+    margin-top: 2.5rem;
+  }
+  #upload-form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1.2rem;
     align-items: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
+  }
+  #upload-form label {
+    font-weight: 500;
+  }
+  #upload-form input[type="file"] {
+    border: 1.5px solid #e2e8f0;
+    padding: 8px;
+    border-radius: 6px;
+    background: #f9fafb;
+    font-size: 1rem;
+  }
+  #upload-form button {
+    background: #2497f3;
     color: #fff;
-    text-decoration: none;
-}
-
-aside {
-    background-color: #fff;
-    width: 250px;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 12px 36px;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+    margin-top: 8px;
+  }
+  #upload-form button:hover {
+    background: #1771c6;
+  }
+  
+  /* ==========================
+      Modal Styles
+  ========================== */
+  .modal {
+    display: none;               /* Hide by default */
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-}
-
-aside h2 {
-    margin-bottom: 20px;
-}
-
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside ul li {
-    margin: 15px 0;
-}
-
-aside ul li a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-main {
-    margin-left: 250px;
-    padding: 20px;
-    background-color: #fff;
-    flex-grow: 1;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(44, 62, 80, 0.13);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .modal:not(.hidden) {
+    display: flex !important;   /* Show when JS toggles .hidden off */
+  }
+  .modal-content {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2.2rem 1.7rem 1.8rem 1.7rem;
+    min-width: 320px;
+    max-width: 96vw;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
+    position: relative;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
+    animation: popupIn 0.19s;
+  }
+  @keyframes popupIn {
+    from { transform: scale(0.93) translateY(15px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  .close-btn, .close-button {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    background: transparent;
     border: none;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* ====================================
-Tables and Forms for Users and Images 
-==================================== */
-
-table {
+    z-index: 2;
+    transition: color 0.17s;
+  }
+  .close-btn:hover, .close-button:hover { color: #2497f3; }
+  
+  /* Hide modals when .hidden is present */
+  .hidden { display: none !important; }
+  
+  /* ==========================
+      Footer - Sticky or Push
+  ========================== */
+  footer {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-/* Modal overlay styling */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+    background: #232a32;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0 12px 0;
+    font-size: 1.07rem;
+    margin-top: auto; /* Pushes footer to bottom if not enough content */
+    letter-spacing: 0.04em;
+  }
+  
+  /* ==========================
+      Responsive Design
+  ========================== */
+  @media (max-width: 900px) {
+    .guidelines, #upload-section, #results-section {
+      max-width: 99vw;
+      padding: 1.3rem 0.7rem;
+    }
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 0 0.8rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.25rem;
+    }
+    .guidelines h2, #upload-section h2, #results-section h2 {
+      font-size: 1.16rem;
+    }
+    .user-avatar {
+      width: 38px;
+      height: 38px;
+      font-size: 1rem;
+    }
+    .modal-content {
+      min-width: 210px;
+      padding: 1.3rem 0.5rem 1.1rem 0.5rem;
+    }
+  }
+  
+  /* ==========================
+      Accessibility and Usability
+  ========================== */
+  button, .user-avatar {
+    outline: none;
+  }
+  button:focus, .user-avatar:focus {
+    outline: 2px solid #2497f3;
+    outline-offset: 1px;
+  }
+  
+  /* ==========================
+      Utility Classes
+  ========================== */
+  .center {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000; /* ensure it's on top */
   }
-  
-  /* Modal content box */
-  .modal-content {
+  .card {
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    width: 80%;
-    position: relative;
-    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(34,51,84,0.08);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 95vw;
   }
   
-  /* Close button for error modal */
-  .close-button, .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  /* Hide modal by default */
-  .hidden {
-    display: none;
-  }
-  
-/* Modal icon styling */
-.modal-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-/* ==========================
-   managing side by styles    
-========================== */
-/* Sidebar Styles 
-
-#sidebar {
-    width: 250px;
-    background-color: #f4f4f4;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  #sidebar.hidden {
-    transform: translateX(-100%);
-  }
-  
-  .toggle-btn {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    background: #333;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-  }
-  
-  #main-content {
-    margin-left: 270px;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
-  
-  #sidebar.hidden ~ #main-content {
-    margin-left: 0;
-  }
-  */

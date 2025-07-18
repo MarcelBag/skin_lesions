@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <title>Home - Image Analysis</title>
   <link rel="stylesheet" href="/cs/styles.css">
+  <!-- Add viewport for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <!-- ======= Header ======= -->
   <header>
     <div class="header-container">
       <h1>Dashboard</h1>
@@ -21,6 +24,7 @@
     </div>
   </header>
 
+  <!-- ======= Settings Modal ======= -->
   <div id="settings-modal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -49,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Error Modal: this will show error messages, centered on the page -->
+  <!-- ======= Error Modal ======= -->
   <div id="error-modal" class="modal hidden">
     <div class="modal-content">
       <span class="close-button" id="close-error">&times;</span>
@@ -57,50 +61,42 @@
     </div>
   </div>
 
-  <section class="guidelines">
-    <h2>Guidelines</h2>
-    <p>Welcome to the Image Analysis app. Follow these steps to analyze your image:</p>
-    <ul>
-      <li>Ensure the image is clear and relevant for the analysis.</li>
-      <li>Select whether you want to analyze for "benign" or "malignant" results.</li>
-      <li>Click the upload button and submit your image for processing.</li>
-    </ul>
-  </section>
+  <!-- ======= Main Content Wrapper ======= -->
+  <main>
+    <!-- ======= Guidelines Section ======= -->
+    <section class="guidelines card">
+      <h2>Guidelines</h2>
+      <p>Welcome to the Image Analysis app. Follow these steps to analyze your image:</p>
+      <ul>
+        <li>Ensure the image is clear and relevant for the analysis.</li>
+        <li>Upload the image for "benign" or "malignant" detection.</li>
+        <li>Click the upload button and submit your image for processing.</li>
+      </ul>
+    </section>
 
-  <!-- older Upload Section 
-  <section id="upload-section">
-    <h2>Upload Image for Analysis</h2>
-    <form id="upload-form">
-      <label for="image">Upload Image:</label>
-      <input type="file" id="image" name="image" accept="image/*" required>
-      <label for="analysis-type">Analysis Type:</label>
-      <select id="analysis-type" name="analysis-type">
-        <option value="benign">Benign</option>
-        <option value="malignant">Malignant</option>
-      </select>
-      <button type="submit">Submit Image</button>
-    </form>
-  </section>
+    <!-- ======= Upload Section ======= -->
+    <section id="upload-section" class="card">
+      <h2>Upload Image for Analysis</h2>
+      <form id="upload-form">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <button type="submit">Submit Image</button>
+      </form>
+    </section>
+    
+    <!-- ======= Results Section ======= -->
+    <section id="results-section" class="hidden card">
+      <h2>Analysis Results</h2>
+      <div id="results"></div>
+    </section>
+  </main>
 
-  --> 
-  <section id="upload-section">
-    <h2>Upload Image for Analysis</h2>
-    <form id="upload-form">
-      <label for="image">Upload Image:</label>
-      <input type="file" id="image" name="image" accept="image/*" required>
-      <button type="submit">Submit Image</button>
-    </form>
-  </section>
-  
-  <section id="results-section" class="hidden">
-    <h2>Analysis Results</h2>
-    <div id="results"></div>
-  </section>
-
+  <!-- ======= Footer ======= -->
   <footer>
     <p>&copy; 2025 Image Analysis Project. All Rights Reserved.</p>
   </footer>
 
+  <!-- ======= Scripts ======= -->
   <script src="/js/script.js"></script>
   <script src="/js/upload.js"></script>
 </body>
