@@ -45,18 +45,47 @@ skin_lesions/
 │   │   └── masks/
 │   │       └── class1/
 │   ├── models/
-│   ├── uploads/
-│   └── 
+│   │   ├── model.py
+│   │   ├── segmentation_model.py
+│   │   ├── skin_lesion_model.h5
+│   │   ├── skin_lesion_model.keras
+│   │   ├── train_segmentation_finetune.py
+│   │   └── user.js
+│   ├── flask_api.py
+│   ├── server.js
+│   ├── train_classifier_finetune.py
+│   ├── train_model.py
+│   ├── train_segmentation.py
+│   ├── yolov5su.pt
+│   └── uploads/
 │
 ├── drawio/
+│   ├── AI Circle.drawio
+│   ├── Mini-batch.drawio
+│   ├── Unbenanntes Diagramm.drawio
+│   ├── Dataset_diagram.drawio.png
+│   ├── OVERFITTING GRAPH
+│   ├── Unsupervised_learning.drawio
+│   ├── Machine learning_Regression.drawio
+│   ├── Reinforce_learning.drawio
+│   ├── Mathematical model of the formal neuron
+│   └── ReLu graph.drawio
 │
 ├── frontend/
 │   ├── assets/
-│   ├── css/
-│   └── styles.js 
+│   ├── cs/
+│   │   └── styles.css
 │   ├── js/
-│   └── script.js 
-│   └── upload.js   
+│   │   ├── app.js
+│   │   ├── dashboard.js
+│   │   ├── report.js
+│   │   ├── script.js
+│   │   └── upload.js
+│   ├── admin.html
+│   ├── home.html
+│   ├── index.html
+│   ├── signin.html
+│   └── signup.html
 │
 ├── node_modules/
 │
@@ -69,6 +98,8 @@ skin_lesions/
 ├── requirements.txt
 ├── package.json
 ├── package-lock.json
+├── image.png
+├── image-1.png
 
 ```
 ---
