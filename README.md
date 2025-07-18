@@ -45,7 +45,8 @@ Being built to assist clinicians and researchers with fast, accessible, and reli
    ```bash
    git clone https://github.com/your-username/skin-lesion-ai.git
    cd skin-lesion-ai
-```
+    ```
+2. **Clone the repository:**
 
 
 ![alt text](image.png)
