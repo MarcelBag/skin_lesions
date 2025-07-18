@@ -8,23 +8,27 @@
   <link rel="icon" href="/assets/favicon.ico">
 </head>
 <body>
-  <div class="admin-layout">
-    <!-- Sidebar Navigation -->
-    <aside class="admin-sidebar">
-      <div class="admin-brand">
-        <span class="admin-logo">IA</span>
-        <h2>Admin</h2>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#" id="user-management" class="sidebar-link">User Management</a></li>
-          <li><a href="#" id="image-management" class="sidebar-link">Image Management</a></li>
-          <li><a href="#" id="logout" class="sidebar-link">Logout</a></li>
-        </ul>
-      </nav>
-    </aside>
+ <!-- ==========================
+     Admin Sidebar Layout
+========================== -->
+<div class="admin-wrapper">
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <span class="admin-avatar">IA</span>
+      <span class="admin-title">Admin</span>
+    </div>
+    <ul class="admin-nav">
+      <li><a href="#" id="user-management" class="active">User Management</a></li>
+      <li><a href="#" id="image-management">Image Management</a></li>
+      <li><a href="#" id="logout">Logout</a></li>
+    </ul>
+  </aside>
 
-    <!-- Main Dashboard Area -->
+  <main id="main-content" class="admin-main">
+    <!-- Content dynamically injected by JS -->
+  </main>
+</div>
+ <!-- Main Dashboard Area -->
     <main class="admin-main" id="main-content">
       <!-- Dynamic content will be injected here via our javascript -->
       <div class="admin-welcome">
