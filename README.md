@@ -84,7 +84,9 @@ skin_lesions/
 │   │   ├── report.js
 │   │   ├── script.js
 │   │   └── upload.js
+│   ├── about.html
 │   ├── admin.html
+│   ├── contact.html
 │   ├── home.html
 │   ├── index.html
 │   ├── signin.html
