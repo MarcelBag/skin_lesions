@@ -2,28 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <link rel="stylesheet" href="/CS/styles.css">
   <link rel="icon" href="/assets/favicon.ico">
 </head>
 <body>
-  <div class="signup-container">
-    <form class="signup-form" id="signup-form">
-      <h2>Create an Account</h2>
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required />
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-      
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-      
-      <button type="submit">Sign Up</button>
-      
-      <p class="signin-link">Already have an account? <a href="/signin">Sign In</a></p>
-    </form>
-  </div>
-  <script src="/JS/script.js"></script>
+  <main class="auth-main">
+    <section class="auth-card">
+      <h2 class="auth-title">Create an Account</h2>
+      <form class="auth-form" id="signup-form">
+        <div class="form-group">
+          <label for="name" class="form-label">Full Name<span>*</span></label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email<span>*</span></label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password<span>*</span></label>
+          <input type="password" id="password" name="password" class="form-input" placeholder="Create a password" required>
+        </div>
+        <button type="submit" class="cta-btn auth-btn">Sign Up</button>
+      </form>
+      <p class="signup-link">Already have an account? <a href="/signin.html">Sign In</a></p>
+    </section>
+  </main>
+  <script src="/js/script.js"></script>
 </body>
 </html>
