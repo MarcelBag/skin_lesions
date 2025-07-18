@@ -500,3 +500,80 @@ html, body {
     .details-inner { font-size: 0.97rem; }
   }
   
+    /* ==========================
+   About Page Specific
+========================== */
+
+.about-main {
+    padding: 2rem 0 4rem 0;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .about-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .about-intro {
+    text-align: center;
+  }
+  .profile-img {
+    width: 108px;
+    height: 108px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #2d3748;
+    margin-bottom: 1rem;
+    background: #fff;
+  }
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .about-card {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    max-width: 450px;
+    flex: 1 1 320px;
+  }
+  .mission-card blockquote {
+    font-style: italic;
+    color: #007BFF;
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid #007BFF;
+    background: #f6f9fc;
+  }
+  .values-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .values-card li {
+    margin: 0.5rem 0;
+    font-size: 1.08rem;
+  }
+  .external-link {
+    color: #007BFF;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  .external-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .about-card {
+      max-width: 100%;
+    }
+  }
+  
