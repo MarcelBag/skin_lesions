@@ -52,9 +52,11 @@ skin_lesions/
 │
 ├── frontend/
 │   ├── assets/
-│   ├── cs/
+│   ├── css/
+│   └── styles.js 
 │   ├── js/
-│   └── __empty__      # HTML files here
+│   └── script.js 
+│   └── upload.js   
 │
 ├── node_modules/
 │
