@@ -47,6 +47,11 @@ Being built to assist clinicians and researchers with fast, accessible, and reli
    cd skin-lesion-ai
     ```
 2. **Clone the repository:**
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 
 ![alt text](image.png)
