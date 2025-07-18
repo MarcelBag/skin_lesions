@@ -46,7 +46,7 @@ skin_lesions/
 │   │       └── class1/
 │   ├── models/
 │   ├── uploads/
-│   └── __empty__      # Other backend files/scripts here
+│   └── 
 │
 ├── drawio/
 │
