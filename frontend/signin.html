@@ -8,22 +8,23 @@
   <link rel="icon" href="/assets/favicon.ico">
 </head>
 <body>
-  <div class="signin-container">
-    <form class="signin-form" id="signin-form">
-      <h2>Sign In</h2>
-      <label for="email">Email:</label>
-      <!-- Changed id from "username" to "email" to match the script -->
-      <input type="text" id="email" name="email" placeholder="Enter your email" required>
-      
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required>
-      
-      <button type="button" id="login-btn">Login</button>
-      
+  <main class="auth-main">
+    <section class="auth-card">
+      <h2 class="auth-title">Sign In</h2>
+      <form class="auth-form" id="signin-form">
+        <div class="form-group">
+          <label for="email" class="form-label">Email<span>*</span></label>
+          <input type="text" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password<span>*</span></label>
+          <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+        </div>
+        <button type="button" class="cta-btn auth-btn" id="login-btn">Login</button>
+      </form>
       <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
-    </form>
-  </div>
-  <!-- At the bottom of signin.html/signup.html -->
-<script src="/js/script.js"></script>
+    </section>
+  </main>
+  <script src="/js/script.js"></script>
 </body>
 </html>

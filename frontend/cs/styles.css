@@ -576,4 +576,207 @@ html, body {
       max-width: 100%;
     }
   }
+  /* ==========================
+   Contact Form Styles
+========================== */
+.contact-section {
+    background: #f6f9fc;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-section .container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+    padding: 2rem 2rem 1.5rem 2rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    color: #2d3748;
+    font-weight: 600;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .form-label {
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 0.2rem;
+  }
+  .form-label span {
+    color: #e53e3e;
+    margin-left: 2px;
+  }
+  
+  .form-input {
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+    font-size: 1rem;
+    background: #f7fafc;
+    color: #222;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #3182ce;
+    background: #fff;
+  }
+  
+  .contact-btn {
+    background: #007bff;
+    color: #fff;
+    padding: 0.9rem 1.3rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 7px;
+    margin-top: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.07);
+    transition: background 0.2s;
+  }
+  .contact-btn:hover, .contact-btn:focus {
+    background: #0056b3;
+  }
+  
+  @media (max-width: 600px) {
+    .contact-section .container {
+      padding: 1.2rem 0.7rem 1rem 0.7rem;
+    }
+    .section-title {
+      font-size: 1.3rem;
+    }
+  }
+  
+/* ==========================
+   Auth Page Styles
+========================== */
+.auth-main {
+    min-height: 100vh;
+    background: linear-gradient(110deg, #eef4fb 60%, #d1e4ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .auth-card {
+    background: #fff;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 6px 30px rgba(44, 62, 80, 0.10), 0 1.5px 8px rgba(44, 62, 80, 0.03);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 2rem auto;
+    transition: box-shadow 0.3s;
+  }
+  
+  .auth-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #1a365d;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    width: 100%;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .form-label {
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: #2d3748;
+    font-size: 1rem;
+  }
+  .form-label span {
+    color: #e53e3e;
+    margin-left: 2px;
+  }
+  
+  .form-input {
+    width: 100%;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    background: #f7fafc;
+    color: #222;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #3182ce;
+    background: #fff;
+  }
+  
+  .cta-btn, .auth-btn {
+    background: #007bff;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.95rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    cursor: pointer;
+    transition: background 0.16s;
+    margin-top: 0.6rem;
+    box-shadow: 0 1.5px 6px rgba(44, 62, 80, 0.09);
+  }
+  .cta-btn:hover, .auth-btn:hover, .cta-btn:focus, .auth-btn:focus {
+    background: #0056b3;
+  }
+  
+  .signup-link {
+    margin-top: 1.6rem;
+    font-size: 1rem;
+  }
+  .signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.14s;
+  }
+  .signup-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 540px) {
+    .auth-card {
+      padding: 1.3rem 0.5rem 1.2rem 0.5rem;
+      border-radius: 10px;
+    }
+    .auth-title { font-size: 1.3rem; }
+  }
   
