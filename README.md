@@ -17,12 +17,14 @@ Being built to assist clinicians and researchers with fast, accessible, and reli
 - **Web-Based User Interface**  
   Clean dashboard for uploading images, visualizing results, and managing predictions.
 
-- **Secure & Role-Based Access**  
-  User authentication with JWT. Support for admin and regular user roles.
+- **Secure Authentication**  
+JWT-based login, registration, and user management (Node.js/Express + MongoDB)
+Admin dashboard for user management
 
 - **Modular & Scalable Architecture**  
-  Separated frontend and backend for flexibility and easy scaling.
+  Separation of backend (Flask for ML, Express for Auth/API), and frontend (HTML, CSS, JS)
 
+  Easy to extend, improve, or deploy
 ---
 
 ## Tech Stack
@@ -146,13 +148,13 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 
 ### How it works
-- * * Frontend (React or vanilla HTML/JS) *** lets user upload image.
+- **Frontend (React or vanilla HTML/JS)** lets user upload image.
 
-- Express backend receives, stores image, forwards to Flask for ML prediction.
+- **Express backend** receives, stores image, forwards to Flask for ML prediction.
 
-- Flask API validates/crops image, runs segmentation + classification, returns result.
+- **Flask API** validates/crops image, runs segmentation + classification, returns result.
 
-- Results shown in web UI (malignant/benign/confidence).
+- **Results shown in web UI (malignant/benign/confidence)**.
 
 ---
 
