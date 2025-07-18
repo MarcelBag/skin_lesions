@@ -8,25 +8,31 @@
   <link rel="icon" href="/assets/favicon.ico">
 </head>
 <body>
+  <div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <span class="admin-logo">IA</span>
+        <h2>Admin</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" id="user-management" class="sidebar-link">User Management</a></li>
+          <li><a href="#" id="image-management" class="sidebar-link">Image Management</a></li>
+          <li><a href="#" id="logout" class="sidebar-link">Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-  <!-- Admin Dashboard Header -->
-  <header>
-    <h1>Admin Dashboard</h1>
-    <nav>
-      <ul>
-        <li><a href="#" id="user-management">User Management</a></li>
-        <li><a href="#" id="image-management">Image Management</a></li>
-        <li><a href="#" id="logout">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
-  <main id="main-content">
-    <!-- Content will be dynamically injected here based on the selected option -->
-  </main>
-
-  <script src="/JS/script.js"></script>
-
+    <!-- Main Dashboard Area -->
+    <main class="admin-main" id="main-content">
+      <!-- Dynamic content will be injected here via our javascript -->
+      <div class="admin-welcome">
+        <h1>Welcome, Admin!</h1>
+        <p>Select an option from the menu to get started.</p>
+      </div>
+    </main>
+  </div>
+  <script src="/js/script.js"></script>
 </body>
 </html>
