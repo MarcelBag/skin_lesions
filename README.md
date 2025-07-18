@@ -120,18 +120,26 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-3. **Start the backend server:**
+3. **Start the nodejs server:**
 ```bash
 cd backend
-python app.py
+node backend/server.js
 
 ```
-3. **Start the backend server:**
+3. **train the segmentation model**
+```bash
+cd backend
+python train_segmentation.py
+```
+
+4. **Start the backend server:**
 
 ```bash
 cd backend
-python app.py
+python flask_api.py
 ``` 
+
+
 ## 🚀 Open the Web App
 
 Visit: [http://localhost:5000](http://localhost:5000)
