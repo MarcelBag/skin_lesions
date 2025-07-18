@@ -129,32 +129,39 @@ python app.py
 cd backend
 python app.py
 ``` 
+## 🚀 Open the Web App
 
-4. **Open the web app:**
+Visit: [http://localhost:5000](http://localhost:5000)
 
-Visit http://localhost:5000
+---
 
-### Model Details
-### CNN Architecture:
-Fine-tuned convolutional neural network trained on skin lesion datasets (ISIC, etc.), with additional segmentation for lesion boundaries.
+## 🧠 Model Details
 
-### Mathematical Foundation:
-Uses supervised deep learning with data augmentation, Adam optimizer, categorical cross-entropy loss, and early stopping for best generalization.
+**CNN Architecture:**  
+Fine-tuned convolutional neural network trained on skin lesion datasets ([ISIC](https://challenge.isic-archive.com/), etc.), with additional segmentation for lesion boundaries.
 
-### References:
+**Mathematical Foundation:**  
+- Uses supervised deep learning  
+- Data augmentation  
+- Adam optimizer  
+- Categorical cross-entropy loss  
+- Early stopping for best generalization
 
-Marcel Shabani, “Predicting Skin Cancer Using Artificial Intelligence”, Master Thesis
+---
 
-ISIC 2019: Skin Lesion Analysis Towards Melanoma Detection
+## 📚 References
 
-TensorFlow documentation
+- Marcel Shabani, “Predicting Skin Cancer Using Artificial Intelligence”, Master Thesis  
+- [ISIC 2019: Skin Lesion Analysis Towards Melanoma Detection](https://challenge.isic-archive.com/)  
+- [TensorFlow documentation](https://www.tensorflow.org/)  
+- [Keras documentation](https://keras.io/)
 
-Keras documentation
+---
 
-### Contributions are welcome!
+## 🤝 Contributions
+
+**Contributions are welcome!**  
 Please open issues or pull requests for bug reports, improvements, or new features.
-
-
 
 
 
