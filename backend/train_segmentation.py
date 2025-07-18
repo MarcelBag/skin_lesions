@@ -33,4 +33,7 @@ def build_unet(input_shape=(224,224,3)):
 model = build_unet()
 model.compile(optimizer=Adam(1e-4), loss='binary_crossentropy', metrics=['accuracy'])
 # ... fit with data generators ...
-model.save('backend/models/skin_segmentation_model.keras')
+model_dir = os.path.join(os.path.dirname(__file__), "models")
+os.makedirs(model_dir, exist_ok=True)
+model.save(os.path.join(model_dir, "skin_segmentation_model.keras"))
+
