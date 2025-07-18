@@ -481,4 +481,22 @@ html, body {
   @media (max-width: 650px) {
     .thesis-summary { padding: 1rem 0.5rem; }
   }
+  .details-inner {
+    margin-top: 0.5rem;
+    color: #2d3b4d;
+    font-size: 1.01rem;
+    padding-left: 0.2rem;
+  }
+  .details-inner h3 {
+    font-size: 1.09rem;
+    color: #3c8dde;
+    margin-bottom: 0.4rem;
+  }
+  .details-inner a {
+    color: #2877c3;
+    text-decoration: underline dotted;
+  }
+  @media (max-width: 600px) {
+    .details-inner { font-size: 0.97rem; }
+  }
   
