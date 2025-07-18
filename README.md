@@ -52,12 +52,23 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-3. **Clone the repository:**
+3. **Start the backend server:**
 ```bash
 cd backend
 python app.py
 
 ```
+3. **Start the backend server:**
+
+```bash
+cd backend
+python app.py
+``` 
+
+4. **Open the web app:**
+
+Visit http://localhost:5000
+
 
 ![alt text](image.png)
 
