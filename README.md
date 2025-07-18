@@ -46,13 +46,18 @@ Being built to assist clinicians and researchers with fast, accessible, and reli
    git clone https://github.com/your-username/skin-lesion-ai.git
    cd skin-lesion-ai
     ```
-2. **Clone the repository:**
+2. **Create a Python virtual environment & install dependencies:**
 ```bash
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+3. **Clone the repository:**
+```bash
+cd backend
+python app.py
 
+```
 
 ![alt text](image.png)
 
