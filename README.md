@@ -144,6 +144,16 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 ```backend/models/segmentation_model.py```U-Net segmentation
 
+
+### How it works
+- Frontend*** (React or vanilla HTML/JS) lets user upload image.
+
+- Express backend receives, stores image, forwards to Flask for ML prediction.
+
+- Flask API validates/crops image, runs segmentation + classification, returns result.
+
+- Results shown in web UI (malignant/benign/confidence).
+
 ---
 
 ## 🧠 Model Details
