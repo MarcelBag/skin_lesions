@@ -35,8 +35,40 @@ Being built to assist clinicians and researchers with fast, accessible, and reli
 ---
 
 ## Project Structure
+```bash
+skin_lesions/
+│
+├── backend/
+│   ├── data_segmentation/
+│   │   ├── images/
+│   │   │   └── class1/
+│   │   └── masks/
+│   │       └── class1/
+│   ├── models/
+│   ├── uploads/
+│   └── __empty__      # Other backend files/scripts here
+│
+├── drawio/
+│
+├── frontend/
+│   ├── assets/
+│   ├── cs/
+│   ├── js/
+│   └── __empty__      # HTML files here
+│
+├── node_modules/
+│
+├── uploads/
+│
+├── venv/
+│
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── package.json
+├── package-lock.json
 
-
+```
 ---
 
 ## Quick Start
@@ -68,6 +100,29 @@ python app.py
 4. **Open the web app:**
 
 Visit http://localhost:5000
+
+### Model Details
+### CNN Architecture:
+Fine-tuned convolutional neural network trained on skin lesion datasets (ISIC, etc.), with additional segmentation for lesion boundaries.
+
+### Mathematical Foundation:
+Uses supervised deep learning with data augmentation, Adam optimizer, categorical cross-entropy loss, and early stopping for best generalization.
+
+### References:
+
+Marcel Shabani, “Predicting Skin Cancer Using Artificial Intelligence”, Master Thesis
+
+ISIC 2019: Skin Lesion Analysis Towards Melanoma Detection
+
+TensorFlow documentation
+
+Keras documentation
+
+### Contributions are welcome!
+Please open issues or pull requests for bug reports, improvements, or new features.
+
+
+
 
 
 ![alt text](image.png)
