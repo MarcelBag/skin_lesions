@@ -5,13 +5,18 @@ from PIL import Image
 from tensorflow.keras.models import load_model
 from ultralytics import YOLO  # Install via: pip install ultralytics
 from .segmentation_model import segment_lesion  # our new function
-
+import os
 
 # ------------------------------------------------------------------
 # Load Models
 # ------------------------------------------------------------------
 # Lesion detection model (skin lesion classification)
-LESION_MODEL_PATH = os.path.join(os.path.dirname(__file__), '../backend/models/skin_lesion_model.keras')
+#LESION_MODEL_PATH = os.path.join(os.path.dirname(__file__), '../backend/models/skin_lesion_model.keras')
+#lesion_model = load_model(LESION_MODEL_PATH)
+
+
+MODEL_DIR = os.path.dirname(__file__)
+LESION_MODEL_PATH = os.path.join(MODEL_DIR, 'skin_lesion_model.keras')
 lesion_model = load_model(LESION_MODEL_PATH)
 
 # Dedicated classifier for verifying skin images.
