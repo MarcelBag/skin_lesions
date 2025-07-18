@@ -35,7 +35,7 @@ def predict_image():
         return jsonify({
             'prediction': predicted_label,
             'confidence': result,
-            'analysisType': predicted_label  # For reference, you can label it "Predicted"
+            'analysisType': predicted_label  
         })
     return jsonify({'message': 'Invalid file format'}), 400
 

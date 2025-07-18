@@ -61,9 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------------------
-  // Home Page Logic
+  // Home Page Logic and avatar and initials
   // ---------------------------
-  if (window.location.pathname === '/home') {
+  if (
+    ['/home', '/admin'].includes(window.location.pathname)
+  ) {
     const token = localStorage.getItem('token');
     if (!token) {
       window.location.href = '/signin';

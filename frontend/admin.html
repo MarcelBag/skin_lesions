@@ -8,29 +8,21 @@
   <link rel="icon" href="/assets/favicon.ico">
 </head>
 <body>
- <!-- ==========================
-     Admin Sidebar Layout
-========================== -->
-<div class="admin-wrapper">
-  <aside class="admin-sidebar">
-    <div class="admin-logo">
-      <span class="admin-avatar">IA</span>
-      <span class="admin-title">Admin</span>
-    </div>
-    <ul class="admin-nav">
-      <li><a href="#" id="user-management" class="active">User Management</a></li>
-      <li><a href="#" id="image-management">Image Management</a></li>
-      <li><a href="#" id="logout">Logout</a></li>
-    </ul>
-  </aside>
-
-  <main id="main-content" class="admin-main">
-    <!-- Content dynamically injected by JS -->
-  </main>
-</div>
- <!-- Main Dashboard Area -->
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <!-- Use the same ID everywhere! -->
+        <div id="user-avatar" class="user-avatar">--</div>
+        <span class="admin-title">Admin</span>
+      </div>
+      <ul class="admin-nav">
+        <li><a href="#" id="user-management" class="active">User Management</a></li>
+        <li><a href="#" id="image-management">Image Management</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </aside>
     <main class="admin-main" id="main-content">
-      <!-- Dynamic content will be injected here via our javascript -->
+      <!-- Dynamic content goes here -->
       <div class="admin-welcome">
         <h1>Welcome, Admin!</h1>
         <p>Select an option from the menu to get started.</p>
