@@ -14,7 +14,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/predict', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def predict_image():
     if 'image' not in request.files:
         return jsonify({'message': 'No image part'}), 400
@@ -39,5 +39,11 @@ def predict_image():
         })
     return jsonify({'message': 'Invalid file format'}), 400
 
+@app.route('/api', methods=['GET'])
+def home():
+    return '🩺 Skin Lesion API is running!'
+@app.get("/api/healthz")
+def health():
+    return {"status": "ok"}, 200
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
