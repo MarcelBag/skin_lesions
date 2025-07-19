@@ -8,6 +8,8 @@ A modern AI-powered web application for **skin lesion analysis and skin cancer r
 Being built to assist clinicians and researchers with fast, accessible, and reliable image-based diagnostics predictions
 
 ---
+[text](Users/marcelbag/Documents/projects/skin_lesions/backend/models/skin_lesion_model.keras)
+
 
 ## Features
 

@@ -173,7 +173,7 @@ app.put('/api/user', authMiddleware, async (req, res) => {
 });
 
 // ----------------------------
-// Admin Routes for User Management
+// Routes for User Management
 // ----------------------------
 app.get('/api/users', authMiddleware, async (req, res) => {
   try {
@@ -232,6 +232,23 @@ app.get('/home', (req, res) => {
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/admin.html'));
 });
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/about.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/contact.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/signup.html'));
+});
+
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/signin.html'));
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

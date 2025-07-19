@@ -38,6 +38,13 @@ def predict_image():
             'analysisType': predicted_label  
         })
     return jsonify({'message': 'Invalid file format'}), 400
+@app.route('/', methods=['GET'])
+def home():
+    return "Flask root"
+
+@app.route('/api/', methods=['GET'])
+def api_root():
+    return "Flask API root - it works"
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
