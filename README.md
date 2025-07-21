@@ -173,6 +173,10 @@ Visit: [http://localhost:5000](http://localhost:5000)
 **CNN Architecture:**  
 Fine-tuned convolutional neural network trained on skin lesion datasets ([ISIC](https://challenge.isic-archive.com/), etc.), with additional segmentation for lesion boundaries.
 
+**Model Capacity:**  
+- The current skin lesion model contains **33,507,269 parameters** (all trainable), reflecting a moderate-to-large CNN architecture.
+- The majority of parameters are concentrated in the dense layer following feature flattening.
+
 **Mathematical Foundation:**  
 - Uses supervised deep learning  
 - Data augmentation  
